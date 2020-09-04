@@ -1,0 +1,10 @@
+{
+  "culture": "en",
+  "texts": {
+    "Permission:DataDictionary": "Data Dictionary",
+    "Permission:Management": "Management",
+    "Permission:Edit": "Edit",
+    "Permission:Create": "Create",
+    "Permission:Delete": "Delete"
+  }
+}

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <RootNamespace>EasyAbp.Abp.DataDictionary</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Volo.Abp.Ddd.Domain" Version="3.0.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\EasyAbp.Abp.DataDictionary.Domain.Shared\EasyAbp.Abp.DataDictionary.Domain.Shared.csproj" />
+    </ItemGroup>
+
+</Project>

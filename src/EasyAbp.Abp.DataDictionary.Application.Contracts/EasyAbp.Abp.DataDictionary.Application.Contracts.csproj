@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <RootNamespace>EasyAbp.Abp.DataDictionary</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\EasyAbp.Abp.DataDictionary.Application.Contracts.Shared\EasyAbp.Abp.DataDictionary.Application.Contracts.Shared.csproj" />
+    </ItemGroup>
+
+</Project>
