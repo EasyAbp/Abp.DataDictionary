@@ -1,7 +1,6 @@
 namespace EasyAbp.Abp.DataDictionary.Dtos
 {
-    public class DataDictionaryUpdateDto
+    public class DataDictionaryUpdateDto : DataDictionaryCreateOrUpdateBaseDto
     {
-        
     }
 }

@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Abp.MultiTenancy;
 
@@ -17,12 +19,14 @@ namespace EasyAbp.Abp.DataDictionary
 
         public ICollection<DataDictionaryItem> Items { get; set; }
 
+        public string Description { get; set; }
+
         protected DataDictionary()
         {
         }
 
         public DataDictionary(Guid id,
-            Guid tenantId,
+            Guid? tenantId,
             string code,
             string displayText,
             bool isSystem = true)
@@ -32,6 +36,34 @@ namespace EasyAbp.Abp.DataDictionary
             Code = code;
             DisplayText = displayText;
             IsSystem = isSystem;
+            Items = new Collection<DataDictionaryItem>();
+        }
+
+        public void AddItem(string itemCode,
+            string itemDisplayText,
+            string itemDescription)
+        {
+            if (Items == null)
+            {
+                return;
+            }
+
+            if (Items.Any(it => it.Code == itemCode))
+            {
+                return;
+            }
+
+            Items.Add(new DataDictionaryItem(Id, TenantId, itemCode, itemDisplayText)
+            {
+                Description = itemDescription
+            });
+        }
+
+        public void RemoveAll() => Items.Clear();
+
+        public void Update(string displayText)
+        {
+            DisplayText = displayText;
         }
     }
 }

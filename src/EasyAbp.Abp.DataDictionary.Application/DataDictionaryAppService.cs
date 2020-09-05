@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EasyAbp.Abp.DataDictionary.Dtos;
 using Volo.Abp.Application.Dtos;
@@ -8,36 +9,67 @@ namespace EasyAbp.Abp.DataDictionary
 {
     public class DataDictionaryAppService : ApplicationService, IDataDictionaryAppService
     {
-        // private readonly IDataDictionaryRepository _dataDictionaryRepository;
+        private readonly IDataDictionaryRepository _dataDictionaryRepository;
+        private readonly IDataDictionaryManager _dataDictionaryManager;
 
-        public DataDictionaryAppService(/*IDataDictionaryRepository dataDictionaryRepository*/)
+        public DataDictionaryAppService(IDataDictionaryRepository dataDictionaryRepository,
+            IDataDictionaryManager dataDictionaryManager)
         {
-            // _dataDictionaryRepository = dataDictionaryRepository;
+            _dataDictionaryRepository = dataDictionaryRepository;
+            _dataDictionaryManager = dataDictionaryManager;
         }
 
-        public Task<DataDictionaryDto> CreateAsync(DataDictionaryCreateDto input)
+        public async Task<DataDictionaryDto> CreateAsync(DataDictionaryCreateDto input)
         {
-            throw new NotImplementedException();
+            var newDict = new DataDictionary(GuidGenerator.Create(),
+                CurrentTenant.Id,
+                input.Code,
+                input.DisplayText,
+                input.IsSystem)
+            {
+                Description = input.Description
+            };
+
+            foreach (var itemDto in input.Items)
+            {
+                newDict.AddItem(itemDto.Code, itemDto.DisplayText, itemDto.Description);
+            }
+
+            await _dataDictionaryManager.CreateAsync(newDict);
+
+            return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(newDict);
         }
 
-        public Task<DataDictionaryDto> UpdateAsync(Guid id, DataDictionaryUpdateDto input)
+        public async Task<DataDictionaryDto> UpdateAsync(Guid id, DataDictionaryUpdateDto input)
         {
-            throw new NotImplementedException();
+            var dict = await _dataDictionaryRepository.GetAsync(id);
+
+            dict.Update(input.DisplayText);
+            dict.Description = input.Description;
+            dict.RemoveAll();
+            foreach (var itemDto in input.Items)
+            {
+                dict.AddItem(itemDto.Code, itemDto.DisplayText, itemDto.Description);
+            }
+
+            await _dataDictionaryManager.UpdateAsync(dict);
+
+            return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(dict);
         }
 
-        public Task DeleteAsync(Guid id)
+        public Task DeleteAsync(Guid id) => _dataDictionaryRepository.DeleteAsync(id);
+
+        public async Task<DataDictionaryDto> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var dict = await _dataDictionaryRepository.GetAsync(id);
+            return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(dict);
         }
 
-        public Task<DataDictionaryDto> GetAsync(Guid id)
+        public async Task<PagedResultDto<DataDictionaryDto>> GetListAsync(PagedResultRequestDto input)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<PagedResultDto<DataDictionaryDto>> GetListAsync(PagedResultRequestDto input)
-        {
-            throw new NotImplementedException();
+            var totalCount = await _dataDictionaryRepository.GetCountAsync();
+            var resultList = await _dataDictionaryRepository.GetListAsync(input.SkipCount, input.MaxResultCount);
+            return new PagedResultDto<DataDictionaryDto>(totalCount, ObjectMapper.Map<List<DataDictionary>, List<DataDictionaryDto>>(resultList));
         }
     }
 }
