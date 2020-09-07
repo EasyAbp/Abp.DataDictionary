@@ -27,7 +27,8 @@ namespace EasyAbp.Abp.DataDictionary
                 {
                     DictionaryCode = codeProperty.GetCustomAttribute<DictionaryCodeFieldAttribute>().DictionaryCode,
                     DtoType = type,
-                    RenderFieldProperty = renderProperty.PropertyType
+                    RenderFieldProperty = renderProperty,
+                    DictionaryCodeProperty = codeProperty
                 });
             }
 

@@ -1,4 +1,5 @@
-﻿using Volo.Abp.Domain;
+﻿using Volo.Abp;
+using Volo.Abp.Domain;
 using Volo.Abp.Modularity;
 
 namespace EasyAbp.Abp.DataDictionary
@@ -7,5 +8,8 @@ namespace EasyAbp.Abp.DataDictionary
         typeof(AbpDataDictionaryDomainSharedModule))]
     public class AbpDataDictionaryDomainModule : AbpModule
     {
+        public override void OnApplicationInitialization(ApplicationInitializationContext context)
+        {
+        }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 
 namespace EasyAbp.Abp.DataDictionary
 {
@@ -8,7 +9,9 @@ namespace EasyAbp.Abp.DataDictionary
 
         public string DictionaryCode { get; set; }
 
-        public Type RenderFieldProperty { get; set; }
+        public PropertyInfo DictionaryCodeProperty { get; set; }
+
+        public PropertyInfo RenderFieldProperty { get; set; }
     }
 
     [AttributeUsage(AttributeTargets.Property)]
