@@ -5,6 +5,6 @@ namespace EasyAbp.Abp.DataDictionary
 {
     public interface IDataDictionaryLoader
     {
-        List<DataDictionaryRule> ScanRules(Assembly assembly = null);
+        List<DataDictionaryRule> ScanRules(Assembly assembly);
     }
 }
