@@ -1,6 +1,8 @@
-﻿namespace EasyAbp.Abp.DataDictionary.HttpApi.Controllers
+﻿using Volo.Abp.AspNetCore.Mvc;
+
+namespace EasyAbp.Abp.DataDictionary.HttpApi.Controllers
 {
-    public class DataDictionaryBaseController
+    public class DataDictionaryBaseController : AbpController
     {
         
     }

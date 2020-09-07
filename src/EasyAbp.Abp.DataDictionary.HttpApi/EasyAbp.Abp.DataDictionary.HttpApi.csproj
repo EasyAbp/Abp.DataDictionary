@@ -4,4 +4,12 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\EasyAbp.Abp.DataDictionary.Application.Contracts\EasyAbp.Abp.DataDictionary.Application.Contracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="3.1.0" />
+    </ItemGroup>
+
 </Project>
