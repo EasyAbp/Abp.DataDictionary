@@ -12,7 +12,7 @@ namespace EasyAbp.Abp.DataDictionary.Domain.Tests
     {
         protected override void AfterAddApplication(IServiceCollection services)
         {
-            services.AddTransient<IDataDictionaryRenderValueProvider, TestRuleValueProvider>();
+            services.AddTransient<IDataDictionaryValueProvider, TestRuleValueProvider>();
         }
 
         private readonly IDataDictionaryLoader _dictionaryLoader;
@@ -61,7 +61,7 @@ namespace EasyAbp.Abp.DataDictionary.Domain.Tests
         [DictionaryRenderField] public string SexDescription { get; set; }
     }
 
-    public class TestRuleValueProvider : IDataDictionaryRenderValueProvider
+    public class TestRuleValueProvider : IDataDictionaryValueProvider
     {
         private readonly List<DataDictionaryItemInfo> _itemInfos;
 

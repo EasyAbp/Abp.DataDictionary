@@ -2,7 +2,7 @@
 
 namespace EasyAbp.Abp.DataDictionary
 {
-    public interface IDataDictionaryRenderValueProvider
+    public interface IDataDictionaryValueProvider
     {
         Task<string> GetValueAsync(string dictCode, string itemCode);
     }

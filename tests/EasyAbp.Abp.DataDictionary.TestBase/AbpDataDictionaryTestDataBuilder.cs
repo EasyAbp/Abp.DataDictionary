@@ -41,6 +41,16 @@ namespace EasyAbp.Abp.DataDictionary
                     new DataDictionaryItem(_testData.DataDictionary2, null, "2", "二级")
                 }
             });
+
+            await _dataDictionaryRepository.InsertAsync(new DataDictionary(_testData.DataDictionary3, null, "XL", "学历")
+            {
+                Items = new List<DataDictionaryItem>
+                {
+                    new DataDictionaryItem(_testData.DataDictionary3, null, "1", "高中"),
+                    new DataDictionaryItem(_testData.DataDictionary3, null, "2", "大专"),
+                    new DataDictionaryItem(_testData.DataDictionary3, null, "3", "本科"),
+                }
+            });
         }
     }
 }

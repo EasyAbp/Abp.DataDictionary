@@ -8,10 +8,10 @@ namespace EasyAbp.Abp.DataDictionary
 {
     public class DataDictionaryRenderer : IDataDictionaryRenderer, ITransientDependency
     {
-        protected readonly IList<IDataDictionaryRenderValueProvider> Providers;
+        protected readonly IList<IDataDictionaryValueProvider> Providers;
         protected readonly AbpDataDictionaryOptions Options;
 
-        public DataDictionaryRenderer(IList<IDataDictionaryRenderValueProvider> providers,
+        public DataDictionaryRenderer(IList<IDataDictionaryValueProvider> providers,
             IOptions<AbpDataDictionaryOptions> options)
         {
             Providers = providers;
