@@ -1,37 +1,39 @@
 ﻿using System;
 using System.Threading.Tasks;
 using EasyAbp.Abp.DataDictionary.Dtos;
+using Microsoft.AspNetCore.Mvc;
 using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 
 namespace EasyAbp.Abp.DataDictionary.HttpApi.Controllers
 {
     [RemoteService(Name = DataDictionaryRemoteServiceConsts.RemoteServiceName)]
-    public class DataDictionaryController : DataDictionaryBaseController,IDataDictionaryAppService
+    [Microsoft.AspNetCore.Components.Route("api/data-dictionary/base-management")]
+    public class DataDictionaryController : DataDictionaryBaseController, IDataDictionaryAppService
     {
-        public Task<DataDictionaryDto> CreateAsync(DataDictionaryCreateDto input)
+        private readonly IDataDictionaryAppService _dataDictionaryAppService;
+
+        public DataDictionaryController(IDataDictionaryAppService dataDictionaryAppService)
         {
-            throw new NotImplementedException();
+            _dataDictionaryAppService = dataDictionaryAppService;
         }
 
-        public Task<DataDictionaryDto> UpdateAsync(Guid id, DataDictionaryUpdateDto input)
-        {
-            throw new NotImplementedException();
-        }
+        [HttpPost]
+        public Task<DataDictionaryDto> CreateAsync(DataDictionaryCreateDto input) => _dataDictionaryAppService.CreateAsync(input);
 
-        public Task DeleteAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+        [HttpPut]
+        [Route("{id}")]
+        public Task<DataDictionaryDto> UpdateAsync(Guid id, DataDictionaryUpdateDto input) => _dataDictionaryAppService.UpdateAsync(id, input);
 
-        public Task<DataDictionaryDto> GetAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+        [HttpDelete]
+        [Route("{id}")]
+        public Task DeleteAsync(Guid id) => _dataDictionaryAppService.DeleteAsync(id);
 
-        public Task<PagedResultDto<DataDictionaryDto>> GetListAsync(PagedResultRequestDto input)
-        {
-            throw new NotImplementedException();
-        }
+        [HttpGet]
+        [Route("{id}")]
+        public Task<DataDictionaryDto> GetAsync(Guid id) => _dataDictionaryAppService.GetAsync(id);
+
+        [HttpGet]
+        public Task<PagedResultDto<DataDictionaryDto>> GetListAsync(PagedResultRequestDto input) => _dataDictionaryAppService.GetListAsync(input);
     }
 }
