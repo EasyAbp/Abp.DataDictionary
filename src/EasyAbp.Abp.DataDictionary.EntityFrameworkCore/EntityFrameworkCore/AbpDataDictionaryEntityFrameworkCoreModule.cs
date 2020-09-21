@@ -1,9 +1,8 @@
-﻿using EasyAbp.Abp.DataDictionary.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
-namespace EasyAbp.Abp.DataDictionary
+namespace EasyAbp.Abp.DataDictionary.EntityFrameworkCore
 {
     [DependsOn(typeof(AbpEntityFrameworkCoreModule),
         typeof(AbpDataDictionaryDomainModule))]

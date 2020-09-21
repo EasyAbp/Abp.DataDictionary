@@ -1,9 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
     
     <Import Project="..\..\common.props" />
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\EasyAbp.Abp.DataDictionary.Application.Contracts\EasyAbp.Abp.DataDictionary.Application.Contracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Volo.Abp.Http.Client" Version="3.1.2" />
+    </ItemGroup>
 
 </Project>
