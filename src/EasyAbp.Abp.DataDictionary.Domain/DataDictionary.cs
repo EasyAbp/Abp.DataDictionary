@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using JetBrains.Annotations;
+using Volo.Abp;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Abp.MultiTenancy;
 
@@ -24,6 +25,7 @@ namespace EasyAbp.Abp.DataDictionary
         public virtual bool IsStatic { get; protected set; }
 
         public virtual List<DataDictionaryItem> Items { get; protected set; }
+        
         protected DataDictionary()
         {
         }
@@ -43,7 +45,7 @@ namespace EasyAbp.Abp.DataDictionary
             
             SetContent(displayText, description);
     
-            Items = items;
+            Items = items ?? new List<DataDictionaryItem>();
         }
 
         public void AddOrUpdateItem(string code, string displayText, string description)
