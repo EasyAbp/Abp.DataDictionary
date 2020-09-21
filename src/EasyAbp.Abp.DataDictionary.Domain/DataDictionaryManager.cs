@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using EasyAbp.Abp.DataDictionary.Localization;
+using Microsoft.Extensions.Localization;
 using Volo.Abp;
 using Volo.Abp.Domain.Services;
 
@@ -8,10 +10,13 @@ namespace EasyAbp.Abp.DataDictionary
     public class DataDictionaryManager : DomainService, IDataDictionaryManager
     {
         protected readonly IDataDictionaryRepository DataDictionaryRepository;
+        protected readonly IStringLocalizer<DataDictionaryResource> StringLocalizer;
 
-        public DataDictionaryManager(IDataDictionaryRepository dataDictionaryRepository)
+        public DataDictionaryManager(IDataDictionaryRepository dataDictionaryRepository,
+            IStringLocalizer<DataDictionaryResource> stringLocalizer)
         {
             DataDictionaryRepository = dataDictionaryRepository;
+            StringLocalizer = stringLocalizer;
         }
 
         public virtual async Task CreateAsync(DataDictionary dict)
@@ -31,7 +36,7 @@ namespace EasyAbp.Abp.DataDictionary
             var dict = await DataDictionaryRepository.FindAsync(d => d.Code == code);
             if (dict != null && dict.Id != expectedId)
             {
-                throw new UserFriendlyException($"不能编码为({code})的数据字典，已经存在该编码的数据字典。");
+                throw new UserFriendlyException(StringLocalizer["DataDictionary:ValidateDuplicate", code]);
             }
         }
     }

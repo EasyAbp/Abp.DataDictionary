@@ -5,6 +5,7 @@
     "Permission:Management": "Management",
     "Permission:Edit": "Edit",
     "Permission:Create": "Create",
-    "Permission:Delete": "Delete"
+    "Permission:Delete": "Delete",
+    "DataDictionary:ValidateDuplicate": "The code {0} of the dictionary item is duplicate, please specify again."
   }
 }
