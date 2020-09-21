@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyAbp.Abp.DataDictionary.Dtos;
+using EasyAbp.Abp.DataDictionary.Permissions;
+using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
 namespace EasyAbp.Abp.DataDictionary
 {
+    [Authorize(DataDictionaryPermissions.DataDictionary.Default)]
     public class DataDictionaryAppService : ApplicationService, IDataDictionaryAppService
     {
         private readonly IDataDictionaryRepository _dataDictionaryRepository;
@@ -20,6 +23,7 @@ namespace EasyAbp.Abp.DataDictionary
             _dataDictionaryManager = dataDictionaryManager;
         }
 
+        [Authorize(DataDictionaryPermissions.DataDictionary.Create)]
         public async Task<DataDictionaryDto> CreateAsync(DataDictionaryCreateDto input)
         {
             var newDict = new DataDictionary(GuidGenerator.Create(),
@@ -29,7 +33,7 @@ namespace EasyAbp.Abp.DataDictionary
                 input.Description,
                 new List<DataDictionaryItem>(),
                 input.IsStatic);
-            
+
             foreach (var itemDto in input.Items)
             {
                 newDict.AddOrUpdateItem(itemDto.Code, itemDto.DisplayText, itemDto.Description);
@@ -40,12 +44,13 @@ namespace EasyAbp.Abp.DataDictionary
             return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(newDict);
         }
 
+        [Authorize(DataDictionaryPermissions.DataDictionary.Update)]
         public async Task<DataDictionaryDto> UpdateAsync(Guid id, DataDictionaryUpdateDto input)
         {
             var dict = await _dataDictionaryRepository.GetAsync(id);
 
             dict.SetContent(input.DisplayText, input.Description);
-            
+
             foreach (var itemDto in input.Items)
             {
                 dict.AddOrUpdateItem(itemDto.Code, itemDto.DisplayText, itemDto.Description);
@@ -58,6 +63,7 @@ namespace EasyAbp.Abp.DataDictionary
             return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(dict);
         }
 
+        [Authorize(DataDictionaryPermissions.DataDictionary.Delete)]
         public Task DeleteAsync(Guid id) => _dataDictionaryRepository.DeleteAsync(id);
 
         public async Task<DataDictionaryDto> GetAsync(Guid id)
