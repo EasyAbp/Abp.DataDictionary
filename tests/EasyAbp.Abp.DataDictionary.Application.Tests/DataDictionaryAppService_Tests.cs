@@ -29,7 +29,7 @@ namespace EasyAbp.Abp.DataDictionary.Application.Tests
                 Code = "XB",
                 DisplayText = "性别",
                 Description = "用于表示性别的数据字典。",
-                IsSystem = true,
+                IsStatic = true,
                 Items = new List<DataDictionaryItemDto>
                 {
                     new DataDictionaryItemDto
@@ -124,7 +124,7 @@ namespace EasyAbp.Abp.DataDictionary.Application.Tests
             // Assert
             response.ShouldNotBeNull();
             response.Code.ShouldBe("MZ");
-            response.IsSystem.ShouldBe(true);
+            response.IsStatic.ShouldBe(true);
         }
 
         [Fact]

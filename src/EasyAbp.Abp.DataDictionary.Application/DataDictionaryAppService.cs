@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EasyAbp.Abp.DataDictionary.Dtos;
 using Volo.Abp.Application.Dtos;
@@ -25,14 +26,13 @@ namespace EasyAbp.Abp.DataDictionary
                 CurrentTenant.Id,
                 input.Code,
                 input.DisplayText,
-                input.IsSystem)
-            {
-                Description = input.Description
-            };
-
+                input.Description,
+                new List<DataDictionaryItem>(),
+                input.IsStatic);
+            
             foreach (var itemDto in input.Items)
             {
-                newDict.AddItem(itemDto.Code, itemDto.DisplayText, itemDto.Description);
+                newDict.AddOrUpdateItem(itemDto.Code, itemDto.DisplayText, itemDto.Description);
             }
 
             await _dataDictionaryManager.CreateAsync(newDict);
@@ -44,13 +44,14 @@ namespace EasyAbp.Abp.DataDictionary
         {
             var dict = await _dataDictionaryRepository.GetAsync(id);
 
-            dict.Update(input.DisplayText);
-            dict.Description = input.Description;
-            dict.RemoveAll();
+            dict.SetContent(input.DisplayText, input.Description);
+            
             foreach (var itemDto in input.Items)
             {
-                dict.AddItem(itemDto.Code, itemDto.DisplayText, itemDto.Description);
+                dict.AddOrUpdateItem(itemDto.Code, itemDto.DisplayText, itemDto.Description);
             }
+
+            dict.Items.RemoveAll(item => !input.Items.Select(dtoItem => dtoItem.Code).Contains(item.Code));
 
             await _dataDictionaryManager.UpdateAsync(dict);
 

@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Abp.MultiTenancy;
 
@@ -6,34 +7,46 @@ namespace EasyAbp.Abp.DataDictionary
 {
     public class DataDictionaryItem : FullAuditedEntity, IMultiTenant
     {
-        public Guid? TenantId { get; }
+        public virtual Guid? TenantId { get; protected set; }
 
-        public Guid DataDictionaryId { get; protected set; }
+        public virtual Guid DataDictionaryId { get; protected set; }
 
-        public string Code { get; protected set; }
+        [NotNull]
+        public virtual string Code { get; protected set; }
 
-        public string DisplayText { get; protected set; }
+        [NotNull]
+        public virtual string DisplayText { get; protected set; }
 
-        public string Description { get; set; }
+        [CanBeNull]
+        public virtual string Description { get; protected set; }
 
         protected DataDictionaryItem()
         {
         }
 
-        public DataDictionaryItem(Guid dataDictionaryId,
+        public DataDictionaryItem(
+            Guid dataDictionaryId,
             Guid? tenantId,
-            string code,
-            string displayText)
+            [NotNull] string code,
+            [NotNull] string displayText,
+            [CanBeNull] string description)
         {
             DataDictionaryId = dataDictionaryId;
             TenantId = tenantId;
             Code = code;
-            DisplayText = displayText;
+            
+            SetContent(displayText, description);
         }
 
         public override object[] GetKeys()
         {
             return new object[] {DataDictionaryId, Code};
+        }
+
+        public void SetContent(string displayText, string description)
+        {
+            DisplayText = displayText;
+            Description = description;
         }
     }
 }

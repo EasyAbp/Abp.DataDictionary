@@ -16,7 +16,7 @@ namespace EasyAbp.Abp.DataDictionary.EntityFrameworkCore
                 b.Property(x => x.Code).IsRequired().HasMaxLength(DataDictionaryConsts.MaxCodeLength);
                 b.Property(x => x.DisplayText).IsRequired().HasMaxLength(DataDictionaryConsts.MaxDisplayTextLength);
                 b.Property(x => x.Description).HasMaxLength(DataDictionaryConsts.MaxDescriptionLength);
-                b.Property(x => x.IsSystem).IsRequired();
+                b.Property(x => x.IsStatic).IsRequired();
 
                 b.HasMany(x => x.Items).WithOne().HasForeignKey(x => x.DataDictionaryId).IsRequired();
                 b.HasIndex(x => x.Code);

@@ -24,33 +24,27 @@ namespace EasyAbp.Abp.DataDictionary
 
         public async Task BuildAsync()
         {
-            await _dataDictionaryRepository.InsertAsync(new DataDictionary(_testData.DataDictionary1, null, "MZ", "民族")
-            {
-                Items = new List<DataDictionaryItem>
+            await _dataDictionaryRepository.InsertAsync(new DataDictionary(_testData.DataDictionary1, null, "MZ", "民族", null,
+                new List<DataDictionaryItem>
                 {
-                    new DataDictionaryItem(_testData.DataDictionary1, null, "1", "汉族"),
-                    new DataDictionaryItem(_testData.DataDictionary1, null, "2", "羌族")
-                }
-            });
+                    new DataDictionaryItem(_testData.DataDictionary1, null, "1", "汉族", null),
+                    new DataDictionaryItem(_testData.DataDictionary1, null, "2", "羌族", null)
+                }));
 
-            await _dataDictionaryRepository.InsertAsync(new DataDictionary(_testData.DataDictionary2, null, "DJ", "等级")
-            {
-                Items = new List<DataDictionaryItem>
+            await _dataDictionaryRepository.InsertAsync(new DataDictionary(_testData.DataDictionary2, null, "DJ", "等级", null,
+                new List<DataDictionaryItem>
                 {
-                    new DataDictionaryItem(_testData.DataDictionary2, null, "1", "一级"),
-                    new DataDictionaryItem(_testData.DataDictionary2, null, "2", "二级")
-                }
-            });
+                    new DataDictionaryItem(_testData.DataDictionary2, null, "1", "一级", null),
+                    new DataDictionaryItem(_testData.DataDictionary2, null, "2", "二级", null)
+                }));
 
-            await _dataDictionaryRepository.InsertAsync(new DataDictionary(_testData.DataDictionary3, null, "XL", "学历")
-            {
-                Items = new List<DataDictionaryItem>
+            await _dataDictionaryRepository.InsertAsync(new DataDictionary(_testData.DataDictionary3, null, "XL", "学历", null,
+                new List<DataDictionaryItem>
                 {
-                    new DataDictionaryItem(_testData.DataDictionary3, null, "1", "高中"),
-                    new DataDictionaryItem(_testData.DataDictionary3, null, "2", "大专"),
-                    new DataDictionaryItem(_testData.DataDictionary3, null, "3", "本科"),
-                }
-            });
+                    new DataDictionaryItem(_testData.DataDictionary3, null, "1", "高中", null),
+                    new DataDictionaryItem(_testData.DataDictionary3, null, "2", "大专", null),
+                    new DataDictionaryItem(_testData.DataDictionary3, null, "3", "本科", null),
+                }));
         }
     }
 }

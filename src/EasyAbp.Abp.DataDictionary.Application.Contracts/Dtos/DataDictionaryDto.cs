@@ -9,7 +9,7 @@ namespace EasyAbp.Abp.DataDictionary.Dtos
 
         public string DisplayText { get; set; }
 
-        public bool IsSystem { get; set; }
+        public bool IsStatic { get; set; }
         
         public string Description { get; set; }
     }

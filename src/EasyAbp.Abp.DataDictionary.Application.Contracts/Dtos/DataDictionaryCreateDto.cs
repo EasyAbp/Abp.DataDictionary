@@ -4,6 +4,6 @@ namespace EasyAbp.Abp.DataDictionary.Dtos
     {
         public string Code { get; set; }
 
-        public bool IsSystem { get; set; }
+        public bool IsStatic { get; set; }
     }
 }

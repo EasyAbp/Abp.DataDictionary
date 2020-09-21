@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using JetBrains.Annotations;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Abp.MultiTenancy;
 
@@ -9,61 +10,60 @@ namespace EasyAbp.Abp.DataDictionary
 {
     public class DataDictionary : FullAuditedAggregateRoot<Guid>, IMultiTenant
     {
-        public Guid? TenantId { get; }
+        public virtual Guid? TenantId { get; protected set; }
 
-        public string Code { get; protected set; }
+        [NotNull]
+        public virtual string Code { get; protected set; }
 
-        public string DisplayText { get; protected set; }
+        [NotNull]
+        public virtual string DisplayText { get; protected set; }
+        
+        [CanBeNull]
+        public virtual string Description { get; protected set; }
 
-        public bool IsSystem { get; protected set; }
+        public virtual bool IsStatic { get; protected set; }
 
-        public ICollection<DataDictionaryItem> Items { get; set; }
-
-        public string Description { get; set; }
-
+        public virtual List<DataDictionaryItem> Items { get; protected set; }
         protected DataDictionary()
         {
         }
 
-        public DataDictionary(Guid id,
+        public DataDictionary(
+            Guid id,
             Guid? tenantId,
-            string code,
-            string displayText,
-            bool isSystem = true)
+            [NotNull] string code,
+            [NotNull] string displayText,
+            [CanBeNull] string description,
+            List<DataDictionaryItem> items,
+            bool isStatic = true) : base(id)
         {
-            Id = id;
             TenantId = tenantId;
             Code = code;
-            DisplayText = displayText;
-            IsSystem = isSystem;
-            Items = new Collection<DataDictionaryItem>();
+            IsStatic = isStatic;
+            
+            SetContent(displayText, description);
+    
+            Items = items;
         }
 
-        public void AddItem(string itemCode,
-            string itemDisplayText,
-            string itemDescription)
+        public void AddOrUpdateItem(string code, string displayText, string description)
         {
-            if (Items == null)
+            var existingItem = Items.SingleOrDefault(item => item.Code == code);
+            
+            if (existingItem == null)
             {
-                return;
+                Items.Add(new DataDictionaryItem(Id, TenantId, code, displayText, description));
             }
-
-            if (Items.Any(it => it.Code == itemCode))
+            else
             {
-                return;
+                existingItem.SetContent(displayText, description);
             }
-
-            Items.Add(new DataDictionaryItem(Id, TenantId, itemCode, itemDisplayText)
-            {
-                Description = itemDescription
-            });
         }
-
-        public void RemoveAll() => Items.Clear();
-
-        public void Update(string displayText)
+        
+        public void SetContent(string displayText, string description)
         {
             DisplayText = displayText;
+            Description = description;
         }
     }
 }
