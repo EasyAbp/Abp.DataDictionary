@@ -6,6 +6,7 @@
     "Permission:Edit": "Edit",
     "Permission:Create": "Create",
     "Permission:Delete": "Delete",
-    "DataDictionary:ValidateDuplicate": "The code {0} of the dictionary item is duplicate, please specify again."
+    "DataDictionary:ValidateDuplicate": "The code {0} of the dictionary item is duplicate, please specify again.",
+    "DataDictionary:CacheItemNotFound": "The data dictionary does not exist, and the dictionary item value cannot be obtained."
   }
 }

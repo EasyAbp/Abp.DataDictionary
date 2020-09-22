@@ -6,6 +6,7 @@
       "Permission:Edit": "编辑",
       "Permission:Create": "创建",
       "Permission:Delete": "删除",
-      "DataDictionary:ValidateDuplicate": "字典项的编码 {0} 重复，请重新指定。"
-  }
+      "DataDictionary:ValidateDuplicate": "字典项的编码 {0} 重复，请重新指定。",
+      "DataDictionary:CacheItemNotFound": "数据字典不存在，无法获取字典值。"
+    }
 }
