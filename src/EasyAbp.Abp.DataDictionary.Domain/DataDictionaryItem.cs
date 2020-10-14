@@ -5,7 +5,7 @@ using Volo.Abp.MultiTenancy;
 
 namespace EasyAbp.Abp.DataDictionary
 {
-    public class DataDictionaryItem : FullAuditedEntity, IMultiTenant
+    public class DataDictionaryItem : AuditedEntity, IMultiTenant
     {
         public virtual Guid? TenantId { get; protected set; }
 
