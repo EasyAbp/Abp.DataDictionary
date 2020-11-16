@@ -64,3 +64,8 @@ public class WaitCacheRenderDto
 ### 3. 概念/术语
 
 Todo
+
+### 4. 路线图
+
+- [ ] 编写 ASP.NET Core MVC Filter 和 Middleware 统一处理响应 DTO。
+- [ ] 缓存 Property Info 提升性能。
