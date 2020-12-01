@@ -2,6 +2,6 @@
 {
     public class DataDictionaryRemoteServiceConsts
     {
-        public const string RemoteServiceName = "AbpDataDictionary";
+        public const string RemoteServiceName = "EasyAbpAbpDataDictionary";
     }
 }
