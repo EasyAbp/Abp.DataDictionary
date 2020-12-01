@@ -6,13 +6,13 @@
 
 ABP 数据字典模块
 
-### 1. 介绍
+## 1. 介绍
 
 **Easy.Abp.Dictionary** 库集成了标准的数据字典管理接口(增/删/改/查)，同时提供了配套的字典值渲染组件。该组件支持自动(`Attribute`)识别对应 DTO 的字典规则，并动态填充 DTO 值(**反射**)。
 
-### 2. 如何使用?
+## 2. 如何使用?
 
-#### 2.1 安装
+### 2.1 安装
 
 开发人员可以通过 NuGet 搜索 `EasyAbp.Abp.DataDictionary.*` 安装相应的组件，整个模块由以下几个包组成:
 
@@ -29,7 +29,7 @@ ABP 数据字典模块
 
 对应的 NuGet 包分别安装到 ABP vNext 项目的不同分层，并依赖对应的模块。
 
-#### 2.2 配置
+### 2.2 配置
 
 当前版本的所有配置都存放在 `AbpDataDictionaryOptions` 类中，开发人员可以在模块的 `ConfigureServie()` 或 `PreConfigureService()` 生命周期，使用 `Configure<TOptions>(TOptions option)` 方法配置对应的参数。
 
@@ -69,11 +69,11 @@ public class WaitCacheRenderDto
 
 上述代码表明 `Level` 字段存放的是字典值编码，它归属于 `XL` 字典，渲染具体字典值的时候，将 `Level` 编码对应的文字性描述赋值给 `LevelValue` 字段。当然你可以将两个特性都标注到 `Level` 上，这样新的值会直接复制给 `Level`。
 
-### 3. 概念/术语
+## 3. 概念/术语
 
 Todo
 
-### 4. 路线图
+## 4. 路线图
 
 - [ ] 编写 ASP.NET Core MVC Filter 和 Middleware 统一处理响应 DTO。
 - [ ] 缓存 Property Info 提升性能。
