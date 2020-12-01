@@ -18,15 +18,16 @@ namespace EasyAbp.Abp.DataDictionary.Domain.Tests
             
             var renderDto = new WaitCacheRenderDto
             {
-                Level = "2"
+                Level = "2",
+                Grade = "2"
             };
 
             // Act
             await render.RenderAsync(renderDto);
 
             // Assert
-            renderDto.LevelValue.ShouldNotBeNull();
-            renderDto.Level.ShouldBe("大专");
+            renderDto.LevelValue.ShouldBe("大专");
+            renderDto.GradeValue.ShouldBe("二级");
         }
     }
 
@@ -35,7 +36,14 @@ namespace EasyAbp.Abp.DataDictionary.Domain.Tests
         [DictionaryCodeField("XL")]
         public string Level { get; set; }
 
-        [DictionaryRenderField]
+        [DictionaryRenderField("XL")]
         public string LevelValue { get; set; }
+
+
+        [DictionaryCodeField("DJ")]
+        public string Grade { get; set; }
+
+        [DictionaryRenderField("DJ")]
+        public string GradeValue { get; set; }
     }
 }
