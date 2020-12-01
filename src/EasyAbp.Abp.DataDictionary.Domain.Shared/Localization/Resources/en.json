@@ -2,7 +2,7 @@
   "culture": "en",
   "texts": {
     "Permission:DataDictionary": "Data Dictionary",
-    "Permission:Management": "Management",
+    "Permission:Manage": "Manage",
     "Permission:Edit": "Edit",
     "Permission:Create": "Create",
     "Permission:Delete": "Delete",

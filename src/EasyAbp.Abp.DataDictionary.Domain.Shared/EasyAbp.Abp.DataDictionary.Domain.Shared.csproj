@@ -12,9 +12,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Localization\Resources\en.json" />
+      <Content Remove="Localization\Resources\en.json" />
       <EmbeddedResource Include="Localization\Resources\en.json" />
-      <None Remove="Localization\Resources\zh-Hans.json" />
+      <Content Remove="Localization\Resources\zh-Hans.json" />
       <EmbeddedResource Include="Localization\Resources\zh-Hans.json" />
     </ItemGroup>
 

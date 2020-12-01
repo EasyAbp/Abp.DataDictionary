@@ -2,7 +2,7 @@ using Volo.Abp.Localization;
 
 namespace EasyAbp.Abp.DataDictionary.Localization
 {
-    [LocalizationResourceName("DataDictionary")]
+    [LocalizationResourceName("EasyAbpDataDictionary")]
     public class DataDictionaryResource
     {
         

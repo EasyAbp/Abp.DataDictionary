@@ -8,7 +8,7 @@ using Volo.Abp.Application.Dtos;
 namespace EasyAbp.Abp.DataDictionary.HttpApi.Controllers
 {
     [RemoteService(Name = DataDictionaryRemoteServiceConsts.RemoteServiceName)]
-    [Route("api/data-dictionary/base-management")]
+    [Route("api/data-dictionary/data-dictionary")]
     public class DataDictionaryController : DataDictionaryBaseController, IDataDictionaryAppService
     {
         private readonly IDataDictionaryAppService _dataDictionaryAppService;

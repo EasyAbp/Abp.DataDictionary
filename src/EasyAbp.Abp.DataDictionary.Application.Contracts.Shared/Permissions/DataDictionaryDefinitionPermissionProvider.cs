@@ -14,7 +14,7 @@ namespace EasyAbp.Abp.DataDictionary.Permissions
             dataDictionary.AddChild(DataDictionaryPermissions.DataDictionary.Create, L("Permission:Create"));
             dataDictionary.AddChild(DataDictionaryPermissions.DataDictionary.Update, L("Permission:Edit"));
             dataDictionary.AddChild(DataDictionaryPermissions.DataDictionary.Delete, L("Permission:Delete"));
-            dataDictionary.AddChild(DataDictionaryPermissions.DataDictionary.Management, L("Permission:Management"));
+            dataDictionary.AddChild(DataDictionaryPermissions.DataDictionary.Manage, L("Permission:Manage"));
         }
 
         private static LocalizableString L(string name)
