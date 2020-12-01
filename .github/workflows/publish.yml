@@ -2,7 +2,12 @@ name: publish to nuget
 on:
   push:
     branches:
-      - dev
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
 jobs:
   publish:
     runs-on: windows-latest
@@ -10,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: NuGet/setup-nuget@v1.0.5
 
-      - name: read project file
+      - name: read common.props
         id: commonProps
         uses: juliangruber/read-file-action@v1
         with:
