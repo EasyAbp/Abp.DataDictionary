@@ -7,7 +7,8 @@ namespace EasyAbp.Abp.DataDictionary
 {
     public class DataDictionaryLoader : IDataDictionaryLoader, ITransientDependency
     {
-        public List<DataDictionaryRule> ScanRules(Assembly assembly)
+
+        public virtual List<DataDictionaryRule> ScanRules(Assembly assembly)
         {
             var dtoTypes = assembly.GetTypes();
             var rules = new List<DataDictionaryRule>();
@@ -18,18 +19,26 @@ namespace EasyAbp.Abp.DataDictionary
                     .GetProperties()
                     .Where(p => p.IsDefined(typeof(DictionaryCodeFieldAttribute)) || p.IsDefined(typeof(DictionaryRenderFieldAttribute)))
                     .ToList();
-                if (properties.Count != 2) continue;
 
-                var codeProperty = properties.First(p => p.IsDefined(typeof(DictionaryCodeFieldAttribute)));
-                var renderProperty = properties.First(p => p.IsDefined(typeof(DictionaryRenderFieldAttribute)));
+                var codeProperties = properties.Where(p => p.IsDefined(typeof(DictionaryCodeFieldAttribute)));
+                var renderProperties = properties.Where(p => p.IsDefined(typeof(DictionaryRenderFieldAttribute)));
 
-                rules.Add(new DataDictionaryRule
+                foreach (var codeProperty in codeProperties)
                 {
-                    DictionaryCode = codeProperty.GetCustomAttribute<DictionaryCodeFieldAttribute>().DictionaryCode,
-                    DtoType = type,
-                    RenderFieldProperty = renderProperty,
-                    DictionaryCodeProperty = codeProperty
-                });
+                    var dictionaryCode = codeProperty.GetCustomAttribute<DictionaryCodeFieldAttribute>().DictionaryCode;
+                    var renderProperty = renderProperties.FirstOrDefault(x => x.GetCustomAttribute<DictionaryRenderFieldAttribute>().DictionaryCode == dictionaryCode);
+                    if (renderProperty == null)
+                    {
+                        continue;
+                    }
+                    rules.Add(new DataDictionaryRule
+                    {
+                        DictionaryCode = dictionaryCode,
+                        DtoType = type,
+                        RenderFieldProperty = renderProperty,
+                        DictionaryCodeProperty = codeProperty
+                    });
+                }
             }
 
             return rules;

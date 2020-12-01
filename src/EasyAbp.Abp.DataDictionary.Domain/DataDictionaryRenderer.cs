@@ -21,18 +21,25 @@ namespace EasyAbp.Abp.DataDictionary
         public virtual async Task<TDto> RenderAsync<TDto>(TDto sourceDto)
         {
             var dtoType = typeof(TDto);
-            var rule = Options.Rules.FirstOrDefault(r => r.DtoType == dtoType);
-            if (rule == null)
+            var rules = Options.Rules.Where(r => r.DtoType == dtoType).ToList();
+            if (!rules.Any())
             {
                 return sourceDto;
             }
 
-            foreach (var provider in Providers)
+            foreach (var rule in rules)
             {
-                // TODO: Possible bug 1.
-                var itemCode = (string) rule.DictionaryCodeProperty.GetValue(sourceDto);
-                var value = await provider.GetValueAsync(rule.DictionaryCode, itemCode);
-                rule.RenderFieldProperty.SetValue(sourceDto, value);
+                foreach (var provider in Providers)
+                {
+                    // TODO: Possible bug 1.
+                    var itemCode = (string)rule.DictionaryCodeProperty.GetValue(sourceDto);
+                    if (itemCode == null)
+                    {
+                        break;
+                    }
+                    var value = await provider.GetValueAsync(rule.DictionaryCode, itemCode);
+                    rule.RenderFieldProperty.SetValue(sourceDto, value);
+                }
             }
 
             return sourceDto;
