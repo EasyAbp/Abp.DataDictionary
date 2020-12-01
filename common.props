@@ -1,14 +1,14 @@
 <Project>
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <Version>0.0.1</Version>
+    <Version>0.1.0</Version>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>EasyAbp Team</Authors>
-    <Description>数据字典模块，用于常规的数据字典管理。</Description>
+    <Description>Abp data dictionary module.</Description>
     <PackageIconUrl>https://avatars3.githubusercontent.com/u/58311641?s=128</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/EasyAbp/Abp.WeChat</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/EasyAbp/Abp.WeChat</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/EasyAbp/Abp.DataDictionary</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/EasyAbp/Abp.DataDictionary</RepositoryUrl>
     <PackageTags>abp module easyabp data-dictionary dictionary zony</PackageTags>
     <Company>EasyAbp</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

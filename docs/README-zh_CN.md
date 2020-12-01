@@ -1,3 +1,11 @@
+# Abp.DataDictionary
+
+[![NuGet](https://img.shields.io/nuget/v/EasyAbp.Abp.DataDictionary.Domain.Shared.svg?style=flat-square)](https://www.nuget.org/packages/EasyAbp.Abp.DataDictionary.Domain.Shared)
+[![NuGet Download](https://img.shields.io/nuget/dt/EasyAbp.Abp.DataDictionary.Domain.Shared.svg?style=flat-square)](https://www.nuget.org/packages/EasyAbp.Abp.DataDictionary.Domain.Shared)
+[![GitHub stars](https://img.shields.io/github/stars/EasyAbp/Abp.DataDictionary?style=social)](https://www.github.com/EasyAbp/Abp.DataDictionary)
+
+ABP 数据字典模块
+
 ### 1. 介绍
 
 **Easy.Abp.Dictionary** 库集成了标准的数据字典管理接口(增/删/改/查)，同时提供了配套的字典值渲染组件。该组件支持自动(`Attribute`)识别对应 DTO 的字典规则，并动态填充 DTO 值(**反射**)。
