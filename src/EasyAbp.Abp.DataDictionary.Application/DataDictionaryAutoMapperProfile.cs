@@ -8,6 +8,7 @@ namespace EasyAbp.Abp.DataDictionary
         public DataDictionaryAutoMapperProfile()
         {
             CreateMap<DataDictionary, DataDictionaryDto>();
+            CreateMap<DataDictionaryItem, DataDictionaryItemDto>().ReverseMap();
         }
     }
 }
