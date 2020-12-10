@@ -124,6 +124,7 @@ namespace EasyAbp.Abp.DataDictionary.Application.Tests
             // Assert
             response.ShouldNotBeNull();
             response.Code.ShouldBe("MZ");
+            response.Items.Count.ShouldNotBe(0);
             response.IsStatic.ShouldBe(true);
         }
 
