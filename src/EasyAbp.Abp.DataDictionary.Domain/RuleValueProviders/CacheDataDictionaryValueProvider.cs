@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using EasyAbp.Abp.DataDictionary.Localization;
 using Microsoft.Extensions.Localization;
+using Volo.Abp;
 using Volo.Abp.Caching;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Entities;
@@ -29,6 +30,11 @@ namespace EasyAbp.Abp.DataDictionary.RuleValueProviders
             var cacheItem = await DistributedCache.GetOrAddAsync($"EasyAbp.DataDictionary.{dictCode}.{itemCode}", async () =>
             {
                 var dict = await DataDictionaryRepository.FindAsync(d => d.Code == dictCode);
+                if (dict == null)
+                {
+                    return null;
+                }
+
                 var item = dict.Items.FirstOrDefault(i => i.Code == itemCode);
                 if (item == null)
                 {
@@ -43,7 +49,7 @@ namespace EasyAbp.Abp.DataDictionary.RuleValueProviders
                 };
             });
 
-            return cacheItem.ItemDisplayText;
+            return cacheItem?.ItemDisplayText;
         }
     }
 }
