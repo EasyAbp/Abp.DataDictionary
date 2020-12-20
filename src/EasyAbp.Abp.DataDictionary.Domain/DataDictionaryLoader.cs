@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 
 namespace EasyAbp.Abp.DataDictionary
 {
     public class DataDictionaryLoader : IDataDictionaryLoader, ITransientDependency
     {
-
         public virtual List<DataDictionaryRule> ScanRules(Assembly assembly)
         {
             var dtoTypes = assembly.GetTypes();
             var rules = new List<DataDictionaryRule>();
 
-            foreach (var type in dtoTypes)
+            Parallel.ForEach(dtoTypes, (type) =>
             {
                 var properties = type
                     .GetProperties()
@@ -31,6 +31,7 @@ namespace EasyAbp.Abp.DataDictionary
                     {
                         continue;
                     }
+
                     rules.Add(new DataDictionaryRule
                     {
                         DictionaryCode = dictionaryCode,
@@ -39,7 +40,7 @@ namespace EasyAbp.Abp.DataDictionary
                         DictionaryCodeProperty = codeProperty
                     });
                 }
-            }
+            });
 
             return rules;
         }
