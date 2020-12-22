@@ -56,9 +56,11 @@ namespace EasyAbp.Abp.DataDictionary.Domain.Tests
 
     public class DemoDto
     {
-        [DictionaryCodeField("Sex")] public string Sex { get; set; }
+        [DictionaryCodeField("Sex")] 
+        public string Sex { get; set; }
 
-        [DictionaryRenderField("Sex")] public string SexDescription { get; set; }
+        [DictionaryRenderField("Sex")] 
+        public string SexDescription { get; set; }
     }
 
     public class TestRuleValueProvider : IDataDictionaryValueProvider

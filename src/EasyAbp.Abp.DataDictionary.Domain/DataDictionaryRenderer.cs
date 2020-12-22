@@ -31,14 +31,20 @@ namespace EasyAbp.Abp.DataDictionary
             {
                 foreach (var provider in Providers)
                 {
-                    // TODO: Possible bug 1.
-                    var itemCode = (string)rule.DictionaryCodeProperty.GetValue(sourceDto);
+                    var itemCode = (string) rule.DictionaryCodeProperty.GetValue(sourceDto);
                     if (itemCode == null)
                     {
                         break;
                     }
+
                     var value = await provider.GetValueAsync(rule.DictionaryCode, itemCode);
+                    if (value == null)
+                    {
+                        continue;
+                    }
+
                     rule.RenderFieldProperty.SetValue(sourceDto, value);
+                    break;
                 }
             }
 
