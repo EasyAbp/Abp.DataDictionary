@@ -13,26 +13,4 @@ namespace EasyAbp.Abp.DataDictionary
 
         public PropertyInfo RenderFieldProperty { get; set; }
     }
-
-    [AttributeUsage(AttributeTargets.Property)]
-    public class DictionaryCodeFieldAttribute : Attribute
-    {
-        public string DictionaryCode { get; }
-
-        public DictionaryCodeFieldAttribute(string dictionaryCode)
-        {
-            DictionaryCode = dictionaryCode;
-        }
-    }
-
-    [AttributeUsage(AttributeTargets.Property)]
-    public class DictionaryRenderFieldAttribute : Attribute
-    {
-        public string DictionaryCode { get; }
-
-        public DictionaryRenderFieldAttribute(string dictionaryCode)
-        {
-            DictionaryCode = dictionaryCode;
-        }
-    }
 }
