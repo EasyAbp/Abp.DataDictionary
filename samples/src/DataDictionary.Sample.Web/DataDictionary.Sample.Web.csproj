@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>DataDictionary.Sample.Web</RootNamespace>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
+    <PreserveCompilationReferences>true</PreserveCompilationReferences>
+    <UserSecretsId>DataDictionary.Sample-4681b4fd-151f-4221-84a4-929d86723e4c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <Content Remove="Logs\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Pages\**\*.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Pages\**\*.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataDictionary.Sample.Application\DataDictionary.Sample.Application.csproj" />
+    <ProjectReference Include="..\DataDictionary.Sample.HttpApi\DataDictionary.Sample.HttpApi.csproj" />
+    <ProjectReference Include="..\DataDictionary.Sample.EntityFrameworkCore.DbMigrations\DataDictionary.Sample.EntityFrameworkCore.DbMigrations.csproj" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="4.1.1" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="4.1.1" />
+    <PackageReference Include="Volo.Abp.Swashbuckle" Version="4.1.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="4.1.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="4.1.1" />
+    <PackageReference Include="Volo.Abp.Identity.Web" Version="4.1.1" />
+    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="4.1.1" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="4.1.1" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Web" Version="4.1.1" />
+  </ItemGroup>
+
+</Project>
