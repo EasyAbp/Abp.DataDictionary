@@ -50,5 +50,15 @@ namespace EasyAbp.Abp.DataDictionary
 
             return sourceDto;
         }
+
+        public async Task<List<TDto>> RenderListAsync<TDto>(IEnumerable<TDto> sourceListDto)
+        {
+            foreach (var dto in sourceListDto)
+            {
+                await RenderAsync(dto);
+            }
+
+            return sourceListDto.ToList();
+        }
     }
 }
