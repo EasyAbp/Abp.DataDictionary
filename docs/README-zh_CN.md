@@ -47,8 +47,8 @@ public class DemoModule
             {
                 DictionaryCode = "字典类型编码",
                 DictionaryCodeProperty = null, // 字典类型编码的字段。
-                DtoType = null, // 输出 DTO 的类型。
-                RenderFieldProperty = null // 需要填充字典值(文本)的字段。
+                DtoType = null, 							 // 输出 DTO 的类型。
+                RenderFieldProperty = null 		 // 需要填充字典值(文本)的字段。
             });
         });
     }
@@ -63,12 +63,39 @@ public class WaitCacheRenderDto
     [DictionaryCodeField("XL")]
     public string Level { get; set; }
 
-    [DictionaryRenderField]
+    [DictionaryRenderField("XL")]
     public string LevelValue { get; set; }
 }
 ```
 
 上述代码表明 `Level` 字段存放的是字典值编码，它归属于 `XL` 字典，渲染具体字典值的时候，将 `Level` 编码对应的文字性描述赋值给 `LevelValue` 字段。当然你可以将两个特性都标注到 `Level` 上，这样新的值会直接复制给 `Level`。
+
+对于列表 DTO 来说，你可以将两个特性都标注在一个字段上，模块会自动覆盖掉原始值。
+
+```csharp
+public class StudentGetListOutputDto : EntityDto<Guid>
+{
+    public string Name { get; set; }
+
+    public int Age { get; set; }
+
+    public string Description { get; set; }
+
+    [DictionaryCodeField("Sex")]
+    [DictionaryRenderField("Sex")]
+    public string Sex { get; set; }
+
+    [DictionaryCodeField("Level")]
+    public string Level { get; set; }
+
+    [DictionaryRenderField("Level")]
+    public string LevelValue { get; set; }
+}
+```
+
+效果:
+![企业微信截图_267dc571-1807-43e7-a71c-9b0bbf0fcf5e.png](https://i.loli.net/2021/01/15/CPhi6dQ9R4IOLk1.png)
+
 
 ## 3. 概念/术语
 
@@ -77,4 +104,4 @@ Todo
 ## 4. 路线图
 
 - [ ] 编写 ASP.NET Core MVC Filter 和 Middleware 统一处理响应 DTO。
-- [ ] 缓存 Property Info 提升性能。
+- [x] 缓存 Property Info 提升性能。
