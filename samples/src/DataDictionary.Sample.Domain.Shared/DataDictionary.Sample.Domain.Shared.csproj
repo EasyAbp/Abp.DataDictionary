@@ -7,6 +7,10 @@
     <RootNamespace>DataDictionary.Sample</RootNamespace>
     <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\EasyAbp.Abp.DataDictionary.Domain.Shared\EasyAbp.Abp.DataDictionary.Domain.Shared.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Identity.Domain.Shared" Version="4.1.1" />

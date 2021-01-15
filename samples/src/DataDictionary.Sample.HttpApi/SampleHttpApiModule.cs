@@ -17,8 +17,8 @@ namespace DataDictionary.Sample
         typeof(AbpIdentityHttpApiModule),
         typeof(AbpPermissionManagementHttpApiModule),
         typeof(AbpTenantManagementHttpApiModule),
-        typeof(AbpFeatureManagementHttpApiModule)/*,
-        typeof(AbpDataDictionaryHttpApiModule)*/
+        typeof(AbpFeatureManagementHttpApiModule),
+        typeof(AbpDataDictionaryHttpApiModule)
     )]
     public class SampleHttpApiModule : AbpModule
     {

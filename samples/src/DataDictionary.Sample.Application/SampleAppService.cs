@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DataDictionary.Sample.Localization;
+﻿using DataDictionary.Sample.Localization;
 using Volo.Abp.Application.Services;
 
 namespace DataDictionary.Sample

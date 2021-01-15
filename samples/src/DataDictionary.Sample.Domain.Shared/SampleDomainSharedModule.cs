@@ -1,4 +1,5 @@
 ﻿using DataDictionary.Sample.Localization;
+using EasyAbp.Abp.DataDictionary;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.FeatureManagement;
@@ -23,7 +24,8 @@ namespace DataDictionary.Sample
         typeof(AbpIdentityServerDomainSharedModule),
         typeof(AbpPermissionManagementDomainSharedModule),
         typeof(AbpSettingManagementDomainSharedModule),
-        typeof(AbpTenantManagementDomainSharedModule)
+        typeof(AbpTenantManagementDomainSharedModule),
+        typeof(AbpDataDictionaryDomainSharedModule)
         )]
     public class SampleDomainSharedModule : AbpModule
     {

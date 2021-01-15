@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EasyAbp.Abp.DataDictionary.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
@@ -43,6 +44,7 @@ namespace DataDictionary.Sample.EntityFrameworkCore
             /* Configure your own tables/entities inside the ConfigureSample method */
 
             builder.ConfigureSample();
+            builder.ConfigureDataDictionary();
         }
     }
 }

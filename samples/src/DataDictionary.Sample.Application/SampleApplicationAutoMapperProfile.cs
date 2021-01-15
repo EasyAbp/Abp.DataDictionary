@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DataDictionary.Sample.Student;
 
 namespace DataDictionary.Sample
 {
@@ -6,9 +7,10 @@ namespace DataDictionary.Sample
     {
         public SampleApplicationAutoMapperProfile()
         {
-            /* You can configure your AutoMapper mapping configuration here.
-             * Alternatively, you can split your mapping configurations
-             * into multiple profile classes for a better organization. */
+            CreateMap<StudentEntity, StudentDto>();
+            CreateMap<StudentEntity, StudentGetListOutputDto>();
+            CreateMap<StudentCreateDto, StudentEntity>();
+            CreateMap<StudentUpdateDto, StudentEntity>();
         }
     }
 }

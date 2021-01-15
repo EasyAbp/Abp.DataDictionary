@@ -1,4 +1,5 @@
 using System;
+using EasyAbp.Abp.DataDictionary;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
@@ -26,6 +27,21 @@ namespace DataDictionary.Sample.Student
 
     public class StudentGetListOutputDto : EntityDto<Guid>
     {
+        public string Name { get; set; }
+
+        public int Age { get; set; }
+
+        public string Description { get; set; }
+
+        [DictionaryCodeField("Sex")]
+        [DictionaryRenderField("Sex")]
+        public string Sex { get; set; }
+
+        [DictionaryCodeField("Level")]
+        public string Level { get; set; }
+
+        [DictionaryRenderField("Level")]
+        public string LevelValue { get; set; }
     }
 
     public class GetStudentListInputDto : PagedResultRequestDto
@@ -46,7 +62,7 @@ namespace DataDictionary.Sample.Student
         public string Level { get; set; }
     }
 
-    public interface IStudentAppService : ICrudAppService<StudentDto,StudentGetListOutputDto, Guid, GetStudentListInputDto,
+    public interface IStudentAppService : ICrudAppService<StudentDto, StudentGetListOutputDto, Guid, GetStudentListInputDto,
         StudentCreateDto, StudentUpdateDto>
     {
     }

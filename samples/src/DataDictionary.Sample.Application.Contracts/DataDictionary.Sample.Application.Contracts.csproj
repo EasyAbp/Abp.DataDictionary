@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataDictionary.Sample.Domain.Shared\DataDictionary.Sample.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\src\EasyAbp.Abp.DataDictionary.Application.Contracts\EasyAbp.Abp.DataDictionary.Application.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
