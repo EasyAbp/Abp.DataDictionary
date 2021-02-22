@@ -16,6 +16,8 @@ namespace EasyAbp.Abp.DataDictionary
 
         Task<DataDictionaryDto> GetAsync(Guid id);
 
+        Task<DataDictionaryDto> FindByCodeAsync(string code);
+
         Task<PagedResultDto<DataDictionaryDto>> GetListAsync(PagedResultRequestDto input);
     }
 }
