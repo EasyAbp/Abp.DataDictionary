@@ -35,5 +35,12 @@ namespace EasyAbp.Abp.DataDictionary.HttpApi.Controllers
 
         [HttpGet]
         public Task<PagedResultDto<DataDictionaryDto>> GetListAsync(PagedResultRequestDto input) => _dataDictionaryAppService.GetListAsync(input);
+
+        [HttpGet]
+        [Route("by-code/{code}")]
+        public Task<DataDictionaryDto> FindByCodeAsync(string code)
+        {
+            return _dataDictionaryAppService.FindByCodeAsync(code);
+        }
     }
 }

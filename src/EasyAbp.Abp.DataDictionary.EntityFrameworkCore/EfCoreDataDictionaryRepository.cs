@@ -16,16 +16,17 @@ namespace EasyAbp.Abp.DataDictionary
         {
         }
 
-        public override IQueryable<DataDictionary> WithDetails()
-        {
-            return GetQueryable().Include(x => x.Items);
-        }
 
-        public Task<List<DataDictionary>> GetListAsync(int skipCount, int maxResultCount, CancellationToken cancellationToke = default)
+        public async Task<List<DataDictionary>> GetListAsync(int skipCount, int maxResultCount, CancellationToken cancellationToke = default)
         {
-            return WithDetails()
+            return await (await WithDetailsAsync())
                 .PageBy(skipCount, maxResultCount)
                 .ToListAsync(GetCancellationToken(cancellationToke));
+        }
+
+        public override async Task<IQueryable<DataDictionary>> WithDetailsAsync()
+        {
+            return (await GetQueryableAsync()).Include(x => x.Items);
         }
     }
 }

@@ -7,6 +7,7 @@ using EasyAbp.Abp.DataDictionary.Permissions;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.Domain.Repositories;
 
 namespace EasyAbp.Abp.DataDictionary
 {
@@ -77,6 +78,13 @@ namespace EasyAbp.Abp.DataDictionary
             var totalCount = await _dataDictionaryRepository.GetCountAsync();
             var resultList = await _dataDictionaryRepository.GetListAsync(input.SkipCount, input.MaxResultCount);
             return new PagedResultDto<DataDictionaryDto>(totalCount, ObjectMapper.Map<List<DataDictionary>, List<DataDictionaryDto>>(resultList));
+        }
+
+        public async Task<DataDictionaryDto> FindByCodeAsync(string code)
+        {
+            var dict = await _dataDictionaryRepository.FindAsync(d => d.Code == code);
+
+            return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(dict);
         }
     }
 }
