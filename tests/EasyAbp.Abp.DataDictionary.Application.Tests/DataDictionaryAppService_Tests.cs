@@ -111,7 +111,7 @@ namespace EasyAbp.Abp.DataDictionary.Application.Tests
             UsingDbContext(db =>
             {
                 db.Dictionaries?.FirstOrDefault(x => x.Code == "MZ").ShouldBeNull();
-                db.Dictionaries?.Count().ShouldBe(1);
+                db.Dictionaries?.Count().ShouldBe(2);
             });
         }
 
@@ -143,7 +143,7 @@ namespace EasyAbp.Abp.DataDictionary.Application.Tests
 
             // Assert
             response.ShouldNotBeNull();
-            response.TotalCount.ShouldBe(2);
+            response.TotalCount.ShouldBe(3);
             response.Items.Any(x=>x.Code == "MZ").ShouldBe(true);
         }
     }
