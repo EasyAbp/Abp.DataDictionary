@@ -93,6 +93,21 @@ public class StudentGetListOutputDto : EntityDto<Guid>
 }
 ```
 
+配置完成以后，请在模块的 `OnApplicationInitialization` 方法使用 `IDataDictionaryLoader` 扫描对应的规则。
+
+```csharp
+public class YourModule : AbpModule
+{
+    public override void OnApplicationInitialization(ApplicationInitializationContext context)
+    {
+        var options = context.ServiceProvider.GetRequiredService<IOptions<AbpDataDictionaryOptions>>().Value;
+        // 扫描其他模块。
+        var rules = context.ServiceProvider.GetRequiredService<IDataDictionaryLoader>().ScanRules(typeof(YourOtherModule).Assembly);
+        options.Rules.AddRange(rules);
+    }
+}
+```
+
 效果:
 ![企业微信截图_267dc571-1807-43e7-a71c-9b0bbf0fcf5e.png](https://i.loli.net/2021/01/15/CPhi6dQ9R4IOLk1.png)
 
