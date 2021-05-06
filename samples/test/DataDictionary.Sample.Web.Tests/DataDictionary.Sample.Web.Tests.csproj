@@ -18,7 +18,7 @@
     <PackageReference Include="HtmlAgilityPack" Version="1.11.29" />
     <ProjectReference Include="..\DataDictionary.Sample.Application.Tests\DataDictionary.Sample.Application.Tests.csproj" />
     <ProjectReference Include="..\..\src\DataDictionary.Sample.Web\DataDictionary.Sample.Web.csproj" />
-    <PackageReference Include="Volo.Abp.AspNetCore.TestBase" Version="4.1.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.TestBase" Version="$(AbpVersion)" />
   </ItemGroup>
 
   <ItemGroup>

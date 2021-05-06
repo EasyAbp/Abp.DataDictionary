@@ -19,7 +19,7 @@ namespace DataDictionary.Sample.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("_Abp_DatabaseProvider", EfCoreDatabaseProvider.SqlServer)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("ProductVersion", "5.0.5");
 
             modelBuilder.Entity("DataDictionary.Sample.StudentEntity", b =>
                 {
@@ -163,7 +163,7 @@ namespace DataDictionary.Sample.Migrations
 
                     b.HasIndex("Code");
 
-                    b.ToTable("EasyAbpAbpDataDictionaryDataDictionaries");
+                    b.ToTable("EasyAbpDataDictionaries");
                 });
 
             modelBuilder.Entity("EasyAbp.Abp.DataDictionary.DataDictionaryItem", b =>
@@ -210,7 +210,7 @@ namespace DataDictionary.Sample.Migrations
 
                     b.HasIndex("Code", "DataDictionaryId");
 
-                    b.ToTable("EasyAbpAbpDataDictionaryDataDictionaryItems");
+                    b.ToTable("EasyAbpDataDictionaryItems");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
