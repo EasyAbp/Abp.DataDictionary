@@ -19,6 +19,8 @@ namespace EasyAbp.Abp.DataDictionary
 
         [CanBeNull]
         public virtual string Description { get; protected set; }
+        
+        public virtual bool IsStatic { get; protected set; }
 
         protected DataDictionaryItem()
         {
@@ -29,11 +31,13 @@ namespace EasyAbp.Abp.DataDictionary
             Guid? tenantId,
             [NotNull] string code,
             [NotNull] string displayText,
-            [CanBeNull] string description)
+            [CanBeNull] string description,
+            bool isStatic)
         {
             DataDictionaryId = dataDictionaryId;
             TenantId = tenantId;
             Code = code;
+            IsStatic = isStatic;
             
             SetContent(displayText, description);
         }

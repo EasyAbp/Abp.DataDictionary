@@ -48,13 +48,13 @@ namespace EasyAbp.Abp.DataDictionary
             Items = items ?? new List<DataDictionaryItem>();
         }
 
-        public void AddOrUpdateItem(string code, string displayText, string description)
+        public void AddOrUpdateItem(string code, string displayText, string description, bool isStatic = false)
         {
             var existingItem = Items.SingleOrDefault(item => item.Code == code);
-            
+
             if (existingItem == null)
             {
-                Items.Add(new DataDictionaryItem(Id, TenantId, code, displayText, description));
+                Items.Add(new DataDictionaryItem(Id, TenantId, code, displayText, description, isStatic));
             }
             else
             {

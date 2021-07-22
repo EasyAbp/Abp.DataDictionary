@@ -30,6 +30,7 @@ namespace EasyAbp.Abp.DataDictionary.EntityFrameworkCore
                 b.Property(x => x.Code).IsRequired().HasMaxLength(DataDictionaryItemConsts.MaxCodeLength);
                 b.Property(x => x.DisplayText).IsRequired().HasMaxLength(DataDictionaryItemConsts.MaxDisplayTextLength);
                 b.Property(x => x.Description).HasMaxLength(DataDictionaryItemConsts.MaxDescriptionLength);
+                b.Property(x => x.IsStatic).IsRequired();
 
                 b.HasIndex(x => new {x.Code, x.DataDictionaryId});
                 b.HasKey(x => new {x.Code, x.DataDictionaryId});
