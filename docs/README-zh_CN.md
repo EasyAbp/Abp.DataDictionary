@@ -5,6 +5,8 @@
 [![NuGet Download](https://img.shields.io/nuget/dt/EasyAbp.Abp.DataDictionary.Domain.Shared.svg?style=flat-square)](https://www.nuget.org/packages/EasyAbp.Abp.DataDictionary.Domain.Shared)
 [![GitHub stars](https://img.shields.io/github/stars/EasyAbp/Abp.DataDictionary?style=social)](https://www.github.com/EasyAbp/Abp.DataDictionary)
 
+**维护者:** [real-zony](https://github.com/real-zony) 
+
 ABP 数据字典模块
 
 ## 1. 介绍
