@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\DataDictionary.Sample.EntityFrameworkCore.DbMigrations\DataDictionary.Sample.EntityFrameworkCore.DbMigrations.csproj" />
     <ProjectReference Include="..\DataDictionary.Sample.TestBase\DataDictionary.Sample.TestBase.csproj" />
+    <PackageReference Include="NETStandard.Library" Version="2.0.3" />
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="$(AbpVersion)" />
   </ItemGroup>
 
