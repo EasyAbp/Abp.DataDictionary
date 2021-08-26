@@ -43,7 +43,7 @@ namespace DataDictionary.Sample.Web
     [DependsOn(
         typeof(SampleHttpApiModule),
         typeof(SampleApplicationModule),
-        typeof(SampleEntityFrameworkCoreDbMigrationsModule),
+        typeof(SampleEntityFrameworkCoreModule),
         typeof(AbpAutofacModule),
         typeof(AbpIdentityWebModule),
         typeof(AbpAccountWebIdentityServerModule),

@@ -46,7 +46,7 @@ namespace DataDictionary.Sample.EntityFrameworkCore
             Configure<AbpDbContextOptions>(options =>
             {
                 /* The main point to change your DBMS.
-                 * See also SampleMigrationsDbContextFactory for EF Core tooling. */
+                 * See also SampleDbContextFactory for EF Core tooling. */
                 options.UseSqlServer();
             });
         }

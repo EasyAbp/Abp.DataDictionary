@@ -11,7 +11,7 @@ using Volo.Abp.Modularity;
 namespace DataDictionary.Sample.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(SampleEntityFrameworkCoreDbMigrationsModule),
+        typeof(SampleEntityFrameworkCoreModule),
         typeof(SampleTestBaseModule),
         typeof(AbpEntityFrameworkCoreSqliteModule)
         )]
@@ -47,11 +47,11 @@ namespace DataDictionary.Sample.EntityFrameworkCore
             var connection = new SqliteConnection("Data Source=:memory:");
             connection.Open();
 
-            var options = new DbContextOptionsBuilder<SampleMigrationsDbContext>()
+            var options = new DbContextOptionsBuilder<SampleDbContext>()
                 .UseSqlite(connection)
                 .Options;
 
-            using (var context = new SampleMigrationsDbContext(options))
+            using (var context = new SampleDbContext(options))
             {
                 context.GetService<IRelationalDatabaseCreator>().CreateTables();
             }

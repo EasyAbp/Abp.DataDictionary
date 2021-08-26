@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 
+#
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyAbp.Abp.DataDictionary.Domain.Shared", "src\EasyAbp.Abp.DataDictionary.Domain.Shared\EasyAbp.Abp.DataDictionary.Domain.Shared.csproj", "{2C37B1A9-D5B3-4027-B00A-B5425697CB47}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{38DA856A-5CF2-4F53-ABFE-1B11F3FBECB7}"
@@ -50,8 +50,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataDictionary.Sample.Domain.Shared", "samples\src\DataDictionary.Sample.Domain.Shared\DataDictionary.Sample.Domain.Shared.csproj", "{C48BE6E8-BA92-4B33-A6E7-3D2E443DFCE2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataDictionary.Sample.EntityFrameworkCore", "samples\src\DataDictionary.Sample.EntityFrameworkCore\DataDictionary.Sample.EntityFrameworkCore.csproj", "{8B932609-6BD4-4281-AF83-C37A9C2E0642}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataDictionary.Sample.EntityFrameworkCore.DbMigrations", "samples\src\DataDictionary.Sample.EntityFrameworkCore.DbMigrations\DataDictionary.Sample.EntityFrameworkCore.DbMigrations.csproj", "{7435C557-8645-4AB9-B9DB-D146259B082F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataDictionary.Sample.HttpApi", "samples\src\DataDictionary.Sample.HttpApi\DataDictionary.Sample.HttpApi.csproj", "{8ED82E97-32F6-428F-AE65-08C8F34737D5}"
 EndProject
@@ -151,10 +149,6 @@ Global
 		{8B932609-6BD4-4281-AF83-C37A9C2E0642}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B932609-6BD4-4281-AF83-C37A9C2E0642}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B932609-6BD4-4281-AF83-C37A9C2E0642}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7435C557-8645-4AB9-B9DB-D146259B082F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7435C557-8645-4AB9-B9DB-D146259B082F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7435C557-8645-4AB9-B9DB-D146259B082F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7435C557-8645-4AB9-B9DB-D146259B082F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8ED82E97-32F6-428F-AE65-08C8F34737D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8ED82E97-32F6-428F-AE65-08C8F34737D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8ED82E97-32F6-428F-AE65-08C8F34737D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -215,7 +209,6 @@ Global
 		{70AA940F-16E3-4771-A3AC-6AA21D38C2C3} = {66D7479C-0127-4C77-82A5-82812B9B0B41}
 		{C48BE6E8-BA92-4B33-A6E7-3D2E443DFCE2} = {66D7479C-0127-4C77-82A5-82812B9B0B41}
 		{8B932609-6BD4-4281-AF83-C37A9C2E0642} = {66D7479C-0127-4C77-82A5-82812B9B0B41}
-		{7435C557-8645-4AB9-B9DB-D146259B082F} = {66D7479C-0127-4C77-82A5-82812B9B0B41}
 		{8ED82E97-32F6-428F-AE65-08C8F34737D5} = {66D7479C-0127-4C77-82A5-82812B9B0B41}
 		{1931181A-4526-4E1E-9597-0E57F89B5262} = {66D7479C-0127-4C77-82A5-82812B9B0B41}
 		{AF8133A6-B334-4D80-AF6F-63D84E8474DB} = {66D7479C-0127-4C77-82A5-82812B9B0B41}

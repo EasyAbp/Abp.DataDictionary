@@ -9,17 +9,17 @@ using Volo.Abp.EntityFrameworkCore;
 
 namespace DataDictionary.Sample.Migrations
 {
-    [DbContext(typeof(SampleMigrationsDbContext))]
-    partial class SampleMigrationsDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(SampleDbContext))]
+    partial class SampleDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
                 .HasAnnotation("_Abp_DatabaseProvider", EfCoreDatabaseProvider.SqlServer)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.5");
+                .HasAnnotation("ProductVersion", "5.0.9")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("DataDictionary.Sample.StudentEntity", b =>
                 {
@@ -163,7 +163,7 @@ namespace DataDictionary.Sample.Migrations
 
                     b.HasIndex("Code");
 
-                    b.ToTable("EasyAbpDataDictionaries");
+                    b.ToTable("EasyAbpAbpDataDictionaryDataDictionaries");
                 });
 
             modelBuilder.Entity("EasyAbp.Abp.DataDictionary.DataDictionaryItem", b =>
@@ -210,7 +210,7 @@ namespace DataDictionary.Sample.Migrations
 
                     b.HasIndex("Code", "DataDictionaryId");
 
-                    b.ToTable("EasyAbpDataDictionaryItems");
+                    b.ToTable("EasyAbpAbpDataDictionaryDataDictionaryItems");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
@@ -261,9 +261,7 @@ namespace DataDictionary.Sample.Migrations
                         .HasColumnName("CorrelationId");
 
                     b.Property<string>("Exceptions")
-                        .HasMaxLength(4000)
-                        .HasColumnType("nvarchar(4000)")
-                        .HasColumnName("Exceptions");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ExecutionDuration")
                         .HasColumnType("int")
@@ -557,7 +555,6 @@ namespace DataDictionary.Sample.Migrations
             modelBuilder.Entity("Volo.Abp.Identity.IdentityClaimType", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -604,7 +601,6 @@ namespace DataDictionary.Sample.Migrations
             modelBuilder.Entity("Volo.Abp.Identity.IdentityLinkUser", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("SourceTenantId")
@@ -631,7 +627,6 @@ namespace DataDictionary.Sample.Migrations
             modelBuilder.Entity("Volo.Abp.Identity.IdentityRole", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -708,7 +703,6 @@ namespace DataDictionary.Sample.Migrations
             modelBuilder.Entity("Volo.Abp.Identity.IdentitySecurityLog", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Action")
@@ -783,7 +777,6 @@ namespace DataDictionary.Sample.Migrations
             modelBuilder.Entity("Volo.Abp.Identity.IdentityUser", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("AccessFailedCount")
@@ -1063,7 +1056,6 @@ namespace DataDictionary.Sample.Migrations
             modelBuilder.Entity("Volo.Abp.Identity.OrganizationUnit", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Code")
@@ -2055,7 +2047,6 @@ namespace DataDictionary.Sample.Migrations
             modelBuilder.Entity("Volo.Abp.TenantManagement.Tenant", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataDictionary.Sample.Migrations
 {
-    public partial class Initialize : Migration
+    public partial class Initial440 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,7 +28,7 @@ namespace DataDictionary.Sample.Migrations
                     BrowserInfo = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: true),
                     HttpMethod = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: true),
                     Url = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Exceptions = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: true),
+                    Exceptions = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Comments = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     HttpStatusCode = table.Column<int>(type: "int", nullable: true),
                     ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -298,7 +298,7 @@ namespace DataDictionary.Sample.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EasyAbpDataDictionaries",
+                name: "EasyAbpAbpDataDictionaryDataDictionaries",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -319,7 +319,7 @@ namespace DataDictionary.Sample.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EasyAbpDataDictionaries", x => x.Id);
+                    table.PrimaryKey("PK_EasyAbpAbpDataDictionaryDataDictionaries", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -740,7 +740,7 @@ namespace DataDictionary.Sample.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EasyAbpDataDictionaryItems",
+                name: "EasyAbpAbpDataDictionaryDataDictionaryItems",
                 columns: table => new
                 {
                     DataDictionaryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -755,11 +755,11 @@ namespace DataDictionary.Sample.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EasyAbpDataDictionaryItems", x => new { x.Code, x.DataDictionaryId });
+                    table.PrimaryKey("PK_EasyAbpAbpDataDictionaryDataDictionaryItems", x => new { x.Code, x.DataDictionaryId });
                     table.ForeignKey(
-                        name: "FK_EasyAbpDataDictionaryItems_EasyAbpDataDictionaries_DataDictionaryId",
+                        name: "FK_EasyAbpAbpDataDictionaryDataDictionaryItems_EasyAbpAbpDataDictionaryDataDictionaries_DataDictionaryId",
                         column: x => x.DataDictionaryId,
-                        principalTable: "EasyAbpDataDictionaries",
+                        principalTable: "EasyAbpAbpDataDictionaryDataDictionaries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1257,18 +1257,18 @@ namespace DataDictionary.Sample.Migrations
                 column: "UserName");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EasyAbpDataDictionaries_Code",
-                table: "EasyAbpDataDictionaries",
+                name: "IX_EasyAbpAbpDataDictionaryDataDictionaries_Code",
+                table: "EasyAbpAbpDataDictionaryDataDictionaries",
                 column: "Code");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EasyAbpDataDictionaryItems_Code_DataDictionaryId",
-                table: "EasyAbpDataDictionaryItems",
+                name: "IX_EasyAbpAbpDataDictionaryDataDictionaryItems_Code_DataDictionaryId",
+                table: "EasyAbpAbpDataDictionaryDataDictionaryItems",
                 columns: new[] { "Code", "DataDictionaryId" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_EasyAbpDataDictionaryItems_DataDictionaryId",
-                table: "EasyAbpDataDictionaryItems",
+                name: "IX_EasyAbpAbpDataDictionaryDataDictionaryItems_DataDictionaryId",
+                table: "EasyAbpAbpDataDictionaryDataDictionaryItems",
                 column: "DataDictionaryId");
 
             migrationBuilder.CreateIndex(
@@ -1365,7 +1365,7 @@ namespace DataDictionary.Sample.Migrations
                 name: "AppStudentEntities");
 
             migrationBuilder.DropTable(
-                name: "EasyAbpDataDictionaryItems");
+                name: "EasyAbpAbpDataDictionaryDataDictionaryItems");
 
             migrationBuilder.DropTable(
                 name: "IdentityServerApiResourceClaims");
@@ -1440,7 +1440,7 @@ namespace DataDictionary.Sample.Migrations
                 name: "AbpUsers");
 
             migrationBuilder.DropTable(
-                name: "EasyAbpDataDictionaries");
+                name: "EasyAbpAbpDataDictionaryDataDictionaries");
 
             migrationBuilder.DropTable(
                 name: "IdentityServerApiResources");

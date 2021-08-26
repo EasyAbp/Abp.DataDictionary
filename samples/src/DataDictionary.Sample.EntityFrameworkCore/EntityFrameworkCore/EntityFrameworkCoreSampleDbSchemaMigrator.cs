@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using DataDictionary.Sample.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using DataDictionary.Sample.Data;
 using Volo.Abp.DependencyInjection;
 
 namespace DataDictionary.Sample.EntityFrameworkCore
@@ -20,14 +20,14 @@ namespace DataDictionary.Sample.EntityFrameworkCore
 
         public async Task MigrateAsync()
         {
-            /* We intentionally resolving the SampleMigrationsDbContext
+            /* We intentionally resolving the SampleDbContext
              * from IServiceProvider (instead of directly injecting it)
              * to properly get the connection string of the current tenant in the
              * current scope.
              */
 
             await _serviceProvider
-                .GetRequiredService<SampleMigrationsDbContext>()
+                .GetRequiredService<SampleDbContext>()
                 .Database
                 .MigrateAsync();
         }

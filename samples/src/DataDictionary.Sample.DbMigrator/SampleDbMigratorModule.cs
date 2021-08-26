@@ -7,7 +7,7 @@ namespace DataDictionary.Sample.DbMigrator
 {
     [DependsOn(
         typeof(AbpAutofacModule),
-        typeof(SampleEntityFrameworkCoreDbMigrationsModule),
+        typeof(SampleEntityFrameworkCoreModule),
         typeof(SampleApplicationContractsModule)
         )]
     public class SampleDbMigratorModule : AbpModule

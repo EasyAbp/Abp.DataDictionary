@@ -7,18 +7,18 @@ namespace DataDictionary.Sample.EntityFrameworkCore
 {
     /* This class is needed for EF Core console commands
      * (like Add-Migration and Update-Database commands) */
-    public class SampleMigrationsDbContextFactory : IDesignTimeDbContextFactory<SampleMigrationsDbContext>
+    public class SampleDbContextFactory : IDesignTimeDbContextFactory<SampleDbContext>
     {
-        public SampleMigrationsDbContext CreateDbContext(string[] args)
+        public SampleDbContext CreateDbContext(string[] args)
         {
             SampleEfCoreEntityExtensionMappings.Configure();
 
             var configuration = BuildConfiguration();
 
-            var builder = new DbContextOptionsBuilder<SampleMigrationsDbContext>()
+            var builder = new DbContextOptionsBuilder<SampleDbContext>()
                 .UseSqlServer(configuration.GetConnectionString("Default"));
 
-            return new SampleMigrationsDbContext(builder.Options);
+            return new SampleDbContext(builder.Options);
         }
 
         private static IConfigurationRoot BuildConfiguration()
