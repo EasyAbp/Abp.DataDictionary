@@ -1,4 +1,3 @@
-using System.Collections.Specialized;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 
