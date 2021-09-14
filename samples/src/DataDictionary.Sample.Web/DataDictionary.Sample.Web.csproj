@@ -40,7 +40,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DataDictionary.Sample.Application\DataDictionary.Sample.Application.csproj" />
     <ProjectReference Include="..\DataDictionary.Sample.HttpApi\DataDictionary.Sample.HttpApi.csproj" />
-    <ProjectReference Include="..\DataDictionary.Sample.EntityFrameworkCore.DbMigrations\DataDictionary.Sample.EntityFrameworkCore.DbMigrations.csproj" />
+    <ProjectReference Include="..\DataDictionary.Sample.EntityFrameworkCore\DataDictionary.Sample.EntityFrameworkCore.csproj" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="$(AbpVersion)" />
