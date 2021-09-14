@@ -2,10 +2,10 @@ namespace EasyAbp.Abp.DataDictionary
 {
     public static class DataDictionaryDbProperties
     {
-        public const string DbTablePrefix = "EasyAbpAbpDataDictionary";
-        
-        public const string DbSchema = null;
-        
+        public static string DbTablePrefix { get; set; } = "EasyAbpAbpDataDictionary";
+
+        public static string DbSchema { get; set; } = null;
+
         public const string ConnectionStringName = "EasyAbpAbpDataDictionary";
     }
 }
