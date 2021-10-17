@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.36" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.37" />
     <ProjectReference Include="..\DataDictionary.Sample.Application.Tests\DataDictionary.Sample.Application.Tests.csproj" />
     <ProjectReference Include="..\..\src\DataDictionary.Sample.Web\DataDictionary.Sample.Web.csproj" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
