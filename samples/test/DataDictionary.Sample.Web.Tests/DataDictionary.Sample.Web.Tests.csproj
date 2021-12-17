@@ -3,7 +3,7 @@
   <Import Project="..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <RootNamespace>DataDictionary.Sample</RootNamespace>
@@ -14,8 +14,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.37" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.39" />
     <ProjectReference Include="..\DataDictionary.Sample.Application.Tests\DataDictionary.Sample.Application.Tests.csproj" />
     <ProjectReference Include="..\..\src\DataDictionary.Sample.Web\DataDictionary.Sample.Web.csproj" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
