@@ -5,7 +5,7 @@ namespace DataDictionary.Sample.Controllers
 {
     /* Inherit your controllers from this class.
      */
-    public abstract class SampleController : AbpController
+    public abstract class SampleController : AbpControllerBase
     {
         protected SampleController()
         {

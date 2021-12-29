@@ -5,6 +5,7 @@ using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.TenantManagement;
+using Volo.Abp.VirtualFileSystem;
 
 namespace DataDictionary.Sample
 {
@@ -26,6 +27,11 @@ namespace DataDictionary.Sample
                 typeof(SampleApplicationContractsModule).Assembly,
                 RemoteServiceName
             );
+            
+            Configure<AbpVirtualFileSystemOptions>(options =>
+            {
+                options.FileSets.AddEmbedded<SampleHttpApiClientModule>();
+            });
         }
     }
 }
