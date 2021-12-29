@@ -4,6 +4,7 @@
 [![NuGet](https://img.shields.io/nuget/v/EasyAbp.Abp.DataDictionary.Domain.Shared.svg?style=flat-square)](https://www.nuget.org/packages/EasyAbp.Abp.DataDictionary.Domain.Shared)
 [![NuGet Download](https://img.shields.io/nuget/dt/EasyAbp.Abp.DataDictionary.Domain.Shared.svg?style=flat-square)](https://www.nuget.org/packages/EasyAbp.Abp.DataDictionary.Domain.Shared)
 [![GitHub stars](https://img.shields.io/github/stars/EasyAbp/Abp.DataDictionary?style=social)](https://www.github.com/EasyAbp/Abp.DataDictionary)
+[![Discord online](https://badgen.net/discord/online-members/S6QaezrCRq?label=Discord)](https://discord.gg/S6QaezrCRq)
 
 **Maintainer:** [real-zony](https://github.com/real-zony) 
 
