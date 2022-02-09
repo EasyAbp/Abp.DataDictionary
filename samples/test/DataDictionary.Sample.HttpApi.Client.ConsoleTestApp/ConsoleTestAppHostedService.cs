@@ -10,14 +10,14 @@ namespace DataDictionary.Sample.HttpApi.Client.ConsoleTestApp
     {
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            using (var application = AbpApplicationFactory.Create<SampleConsoleApiClientModule>())
+            using (var application = await AbpApplicationFactory.CreateAsync<SampleConsoleApiClientModule>())
             {
-                application.Initialize();
+                await application.InitializeAsync();
 
                 var demo = application.ServiceProvider.GetRequiredService<ClientDemoService>();
                 await demo.RunAsync();
 
-                application.Shutdown();
+                await application.ShutdownAsync();
             }
         }
 
