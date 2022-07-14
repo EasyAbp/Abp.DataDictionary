@@ -19,26 +19,26 @@ namespace EasyAbp.Abp.DataDictionary.HttpApi.Controllers
         }
 
         [HttpPost]
-        public Task<DataDictionaryDto> CreateAsync(DataDictionaryCreateDto input) => _dataDictionaryAppService.CreateAsync(input);
+        public virtual Task<DataDictionaryDto> CreateAsync(DataDictionaryCreateDto input) => _dataDictionaryAppService.CreateAsync(input);
 
         [HttpPut]
         [Route("{id}")]
-        public Task<DataDictionaryDto> UpdateAsync(Guid id, DataDictionaryUpdateDto input) => _dataDictionaryAppService.UpdateAsync(id, input);
+        public virtual Task<DataDictionaryDto> UpdateAsync(Guid id, DataDictionaryUpdateDto input) => _dataDictionaryAppService.UpdateAsync(id, input);
 
         [HttpDelete]
         [Route("{id}")]
-        public Task DeleteAsync(Guid id) => _dataDictionaryAppService.DeleteAsync(id);
+        public virtual Task DeleteAsync(Guid id) => _dataDictionaryAppService.DeleteAsync(id);
 
         [HttpGet]
         [Route("{id}")]
-        public Task<DataDictionaryDto> GetAsync(Guid id) => _dataDictionaryAppService.GetAsync(id);
+        public virtual Task<DataDictionaryDto> GetAsync(Guid id) => _dataDictionaryAppService.GetAsync(id);
 
         [HttpGet]
-        public Task<PagedResultDto<DataDictionaryDto>> GetListAsync(PagedResultRequestDto input) => _dataDictionaryAppService.GetListAsync(input);
+        public virtual Task<PagedResultDto<DataDictionaryDto>> GetListAsync(PagedResultRequestDto input) => _dataDictionaryAppService.GetListAsync(input);
 
         [HttpGet]
         [Route("by-code/{code}")]
-        public Task<DataDictionaryDto> FindByCodeAsync(string code)
+        public virtual Task<DataDictionaryDto> FindByCodeAsync(string code)
         {
             return _dataDictionaryAppService.FindByCodeAsync(code);
         }
