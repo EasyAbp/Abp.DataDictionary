@@ -7,7 +7,6 @@ using EasyAbp.Abp.DataDictionary.Permissions;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
-using Volo.Abp.Domain.Repositories;
 
 namespace EasyAbp.Abp.DataDictionary
 {
@@ -25,7 +24,7 @@ namespace EasyAbp.Abp.DataDictionary
         }
 
         [Authorize(DataDictionaryPermissions.DataDictionary.Create)]
-        public async Task<DataDictionaryDto> CreateAsync(DataDictionaryCreateDto input)
+        public virtual async Task<DataDictionaryDto> CreateAsync(DataDictionaryCreateDto input)
         {
             var newDict = new DataDictionary(GuidGenerator.Create(),
                 CurrentTenant.Id,
@@ -46,7 +45,7 @@ namespace EasyAbp.Abp.DataDictionary
         }
 
         [Authorize(DataDictionaryPermissions.DataDictionary.Update)]
-        public async Task<DataDictionaryDto> UpdateAsync(Guid id, DataDictionaryUpdateDto input)
+        public virtual async Task<DataDictionaryDto> UpdateAsync(Guid id, DataDictionaryUpdateDto input)
         {
             var dict = await _dataDictionaryRepository.GetAsync(id);
 
@@ -65,22 +64,22 @@ namespace EasyAbp.Abp.DataDictionary
         }
 
         [Authorize(DataDictionaryPermissions.DataDictionary.Delete)]
-        public Task DeleteAsync(Guid id) => _dataDictionaryRepository.DeleteAsync(id);
+        public virtual Task DeleteAsync(Guid id) => _dataDictionaryRepository.DeleteAsync(id);
 
-        public async Task<DataDictionaryDto> GetAsync(Guid id)
+        public virtual async Task<DataDictionaryDto> GetAsync(Guid id)
         {
             var dict = await _dataDictionaryRepository.GetAsync(id);
             return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(dict);
         }
 
-        public async Task<PagedResultDto<DataDictionaryDto>> GetListAsync(PagedResultRequestDto input)
+        public virtual async Task<PagedResultDto<DataDictionaryDto>> GetListAsync(PagedResultRequestDto input)
         {
             var totalCount = await _dataDictionaryRepository.GetCountAsync();
             var resultList = await _dataDictionaryRepository.GetListAsync(input.SkipCount, input.MaxResultCount);
             return new PagedResultDto<DataDictionaryDto>(totalCount, ObjectMapper.Map<List<DataDictionary>, List<DataDictionaryDto>>(resultList));
         }
 
-        public async Task<DataDictionaryDto> FindByCodeAsync(string code)
+        public virtual async Task<DataDictionaryDto> FindByCodeAsync(string code)
         {
             var dict = await _dataDictionaryRepository.FindAsync(d => d.Code == code);
 
