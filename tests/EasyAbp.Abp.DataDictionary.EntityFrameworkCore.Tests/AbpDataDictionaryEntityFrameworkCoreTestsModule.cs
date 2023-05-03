@@ -6,6 +6,7 @@ using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Sqlite;
 using Volo.Abp.Modularity;
+using Volo.Abp.Uow;
 
 namespace EasyAbp.Abp.DataDictionary.EntityFrameworkCore.Tests
 {
@@ -18,6 +19,7 @@ namespace EasyAbp.Abp.DataDictionary.EntityFrameworkCore.Tests
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
+            context.Services.AddAlwaysDisableUnitOfWorkTransaction();
             _sqliteConnection = CreateDatabaseAndGetConnection();
             Configure<AbpDbContextOptions>(op =>
             {
