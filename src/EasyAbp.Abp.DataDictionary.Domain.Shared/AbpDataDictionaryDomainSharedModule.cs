@@ -1,4 +1,5 @@
 ﻿using EasyAbp.Abp.DataDictionary.Localization;
+using Volo.Abp.Domain;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.Validation;
@@ -6,7 +7,10 @@ using Volo.Abp.VirtualFileSystem;
 
 namespace EasyAbp.Abp.DataDictionary
 {
-    [DependsOn(typeof(AbpValidationModule))]
+    [DependsOn(
+        typeof(AbpValidationModule),
+        typeof(AbpDddDomainSharedModule)
+    )]
     public class AbpDataDictionaryDomainSharedModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
