@@ -8,15 +8,8 @@ using Volo.Abp.AspNetCore.TestBase;
 
 namespace DataDictionary.Sample
 {
-    public abstract class SampleWebTestBase : AbpAspNetCoreIntegratedTestBase<SampleWebTestStartup>
+    public abstract class SampleWebTestBase : AbpWebApplicationFactoryIntegratedTest<SampleWebTestStartup>
     {
-        protected override IHostBuilder CreateHostBuilder()
-        {
-            return base
-                .CreateHostBuilder()
-                .UseContentRoot(WebContentDirectoryFinder.CalculateContentRootFolder());
-        }
-
         protected virtual async Task<T> GetResponseAsObjectAsync<T>(string url, HttpStatusCode expectedStatusCode = HttpStatusCode.OK)
         {
             var strResponse = await GetResponseAsStringAsync(url, expectedStatusCode);
