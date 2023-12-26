@@ -2,13 +2,12 @@
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Hosting;
 using Shouldly;
 using Volo.Abp.AspNetCore.TestBase;
 
 namespace DataDictionary.Sample
 {
-    public abstract class SampleWebTestBase : AbpWebApplicationFactoryIntegratedTest<SampleWebTestStartup>
+    public abstract class SampleWebTestBase : AbpWebApplicationFactoryIntegratedTest<Program>
     {
         protected virtual async Task<T> GetResponseAsObjectAsync<T>(string url, HttpStatusCode expectedStatusCode = HttpStatusCode.OK)
         {

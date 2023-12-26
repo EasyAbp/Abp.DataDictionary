@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Globalization;
+using DataDictionary.Sample.EntityFrameworkCore;
 using Localization.Resources.AbpUi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
@@ -19,7 +20,8 @@ namespace DataDictionary.Sample
     [DependsOn(
         typeof(AbpAspNetCoreTestBaseModule),
         typeof(SampleWebModule),
-        typeof(SampleApplicationTestModule)
+        typeof(SampleApplicationTestModule),
+        typeof(SampleEntityFrameworkCoreTestModule)
     )]
     public class SampleWebTestModule : AbpModule
     {
