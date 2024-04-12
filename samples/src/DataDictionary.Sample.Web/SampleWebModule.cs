@@ -173,7 +173,7 @@ namespace DataDictionary.Sample.Web
 
         private void ConfigureAutoApiControllers()
         {
-            Configure<AbpAspNetCoreMvcOptions>(options =>
+            PreConfigure<AbpAspNetCoreMvcOptions>(options =>
             {
                 options.ConventionalControllers.Create(typeof(SampleApplicationModule).Assembly);
             });
