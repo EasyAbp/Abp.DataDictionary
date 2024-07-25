@@ -32,7 +32,7 @@ namespace EasyAbp.Abp.DataDictionary.EntityFrameworkCore.Tests
 
         private SqliteConnection CreateDatabaseAndGetConnection()
         {
-            var connection = new SqliteConnection("Data Source=:memory:");
+            var connection = new AbpUnitTestSqliteConnection("Data Source=:memory:");
             connection.Open();
 
             var options = new DbContextOptionsBuilder<DataDictionaryDbContext>().UseSqlite(connection).Options;
