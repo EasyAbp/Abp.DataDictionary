@@ -20,6 +20,7 @@ namespace EasyAbp.Abp.DataDictionary
         public async Task<List<DataDictionary>> GetListAsync(int skipCount, int maxResultCount, CancellationToken cancellationToke = default)
         {
             return await (await WithDetailsAsync())
+                .OrderBy(x => x.Id)
                 .PageBy(skipCount, maxResultCount)
                 .ToListAsync(GetCancellationToken(cancellationToke));
         }
