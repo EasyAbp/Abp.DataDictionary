@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyAbp.Abp.DataDictionary.Dtos;
+using EasyAbp.Abp.DataDictionary.Localization;
 using EasyAbp.Abp.DataDictionary.Permissions;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
@@ -21,6 +22,9 @@ namespace EasyAbp.Abp.DataDictionary
         {
             _dataDictionaryRepository = dataDictionaryRepository;
             _dataDictionaryManager = dataDictionaryManager;
+
+            LocalizationResource = typeof(DataDictionaryResource);
+            ObjectMapperContext = typeof(AbpDataDictionaryApplicationModule);
         }
 
         [Authorize(DataDictionaryPermissions.DataDictionary.Create)]
