@@ -13,7 +13,7 @@ namespace EasyAbp.Abp.DataDictionary
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            context.Services.AddAutoMapperObjectMapper();
+            context.Services.AddAutoMapperObjectMapper<AbpDataDictionaryApplicationModule>();
             Configure<AbpAutoMapperOptions>(op =>
             {
                 op.AddProfile<DataDictionaryAutoMapperProfile>();
