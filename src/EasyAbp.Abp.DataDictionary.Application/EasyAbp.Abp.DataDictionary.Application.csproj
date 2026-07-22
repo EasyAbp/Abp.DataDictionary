@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Volo.Abp.AutoMapper" Version="$(AbpVersion)" />
+      <PackageReference Include="Volo.Abp.Mapperly" Version="$(AbpVersion)" />
       <PackageReference Include="Volo.Abp.Ddd.Application" Version="$(AbpVersion)" />
     </ItemGroup>
 

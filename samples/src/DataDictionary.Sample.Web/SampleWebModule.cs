@@ -24,7 +24,6 @@ using Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
-using Volo.Abp.AutoMapper;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity.Web;
 using Volo.Abp.Localization;
@@ -80,7 +79,6 @@ namespace DataDictionary.Sample.Web
             ConfigureUrls(configuration);
             ConfigureBundles();
             ConfigureAuthentication(context, configuration);
-            ConfigureAutoMapper();
             ConfigureVirtualFileSystem(hostingEnvironment);
             ConfigureLocalizationServices();
             ConfigureNavigationServices();
@@ -119,14 +117,6 @@ namespace DataDictionary.Sample.Web
                     options.RequireHttpsMetadata = Convert.ToBoolean(configuration["AuthServer:RequireHttpsMetadata"]);
                     options.Audience = "Sample";
                 });
-        }
-
-        private void ConfigureAutoMapper()
-        {
-            Configure<AbpAutoMapperOptions>(options =>
-            {
-                options.AddMaps<SampleWebModule>();
-            });
         }
 
         private void ConfigureVirtualFileSystem(IWebHostEnvironment hostingEnvironment)

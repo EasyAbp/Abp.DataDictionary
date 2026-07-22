@@ -3,8 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Volo.Abp;
 using Volo.Abp.Account;
-using Volo.Abp.AutoMapper;
 using Volo.Abp.FeatureManagement;
+using Volo.Abp.Mapperly;
 using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
@@ -26,11 +26,7 @@ namespace DataDictionary.Sample
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            Configure<AbpAutoMapperOptions>(options =>
-            {
-                options.AddMaps<SampleApplicationModule>();
-                options.AddProfile<SampleApplicationAutoMapperProfile>();
-            });
+            context.Services.AddMapperlyObjectMapper<SampleApplicationModule>();
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
