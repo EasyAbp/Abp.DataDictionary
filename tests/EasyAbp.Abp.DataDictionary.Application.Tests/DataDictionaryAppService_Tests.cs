@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -5,6 +6,7 @@ using EasyAbp.Abp.DataDictionary.Dtos;
 using Microsoft.EntityFrameworkCore;
 using Shouldly;
 using Volo.Abp.Application.Dtos;
+using Volo.Abp.ObjectMapping;
 using Xunit;
 
 namespace EasyAbp.Abp.DataDictionary.Application.Tests
@@ -13,11 +15,44 @@ namespace EasyAbp.Abp.DataDictionary.Application.Tests
     {
         private readonly IDataDictionaryAppService _dataDictionaryAppService;
         private readonly AbpDataDictionaryTestData _testData;
+        private readonly IObjectMapper _objectMapper;
 
         public DataDictionaryAppService_Tests()
         {
             _testData = GetRequiredService<AbpDataDictionaryTestData>();
             _dataDictionaryAppService = GetRequiredService<IDataDictionaryAppService>();
+            _objectMapper = GetRequiredService<IObjectMapper>();
+        }
+
+        [Fact]
+        public void Should_Map_DataDictionary_To_Dto_With_Items()
+        {
+            // Arrange
+            var entity = new DataDictionary(
+                Guid.NewGuid(),
+                null,
+                "XB",
+                "性别",
+                "用于表示性别的数据字典。",
+                new List<DataDictionaryItem>(),
+                isStatic: true);
+
+            entity.AddOrUpdateItem("1", "男", "male");
+            entity.AddOrUpdateItem("2", "女", "female");
+
+            // Act
+            var dto = _objectMapper.Map<DataDictionary, DataDictionaryDto>(entity);
+
+            // Assert
+            dto.ShouldNotBeNull();
+            dto.Id.ShouldBe(entity.Id);
+            dto.Code.ShouldBe("XB");
+            dto.DisplayText.ShouldBe("性别");
+            dto.Description.ShouldBe("用于表示性别的数据字典。");
+            dto.IsStatic.ShouldBeTrue();
+            dto.Items.Count.ShouldBe(2);
+            dto.Items.Single(x => x.Code == "1").DisplayText.ShouldBe("男");
+            dto.Items.Single(x => x.Code == "2").DisplayText.ShouldBe("女");
         }
 
         [Fact]

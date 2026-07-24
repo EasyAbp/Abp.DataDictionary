@@ -5,14 +5,35 @@ namespace DataDictionary.Sample
 {
     public class StudentEntity : FullAuditedAggregateRoot<Guid>
     {
-        public string Name { get; set; }
+        public string Name { get; protected set; }
 
-        public int Age { get; set; }
+        public int Age { get; protected set; }
 
-        public string Description { get; set; }
+        public string Description { get; protected set; }
 
-        public string Sex { get; set; }
+        public string Sex { get; protected set; }
 
-        public string Level { get; set; }
+        public string Level { get; protected set; }
+
+        protected StudentEntity()
+        {
+        }
+
+        public StudentEntity(Guid id, string name, int age, string description, string sex, string level) : base(id)
+        {
+            Name = name;
+            Age = age;
+            Description = description;
+            Sex = sex;
+            Level = level;
+        }
+
+        public void Update(int age, string description, string sex, string level)
+        {
+            Age = age;
+            Description = description;
+            Sex = sex;
+            Level = level;
+        }
     }
 }

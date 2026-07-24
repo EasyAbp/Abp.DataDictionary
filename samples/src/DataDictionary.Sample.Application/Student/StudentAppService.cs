@@ -24,5 +24,29 @@ namespace DataDictionary.Sample.Student
 
             return list;
         }
+
+        // The entity is built and updated explicitly because Mapperly cannot write the entity's
+        // protected setters or call its protected constructor.
+        protected override Task<StudentEntity> MapToEntityAsync(StudentCreateDto createInput)
+        {
+            return Task.FromResult(new StudentEntity(
+                GuidGenerator.Create(),
+                createInput.Name,
+                createInput.Age,
+                createInput.Description,
+                createInput.Sex,
+                createInput.Level));
+        }
+
+        protected override Task MapToEntityAsync(StudentUpdateDto updateInput, StudentEntity entity)
+        {
+            entity.Update(
+                updateInput.Age,
+                updateInput.Description,
+                updateInput.Sex,
+                updateInput.Level);
+
+            return Task.CompletedTask;
+        }
     }
 }
