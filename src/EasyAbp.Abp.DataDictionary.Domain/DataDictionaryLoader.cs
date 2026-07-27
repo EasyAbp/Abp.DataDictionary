@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -11,7 +12,9 @@ namespace EasyAbp.Abp.DataDictionary
         public virtual List<DataDictionaryRule> ScanRules(Assembly assembly)
         {
             var dtoTypes = assembly.GetTypes();
-            var rules = new List<DataDictionaryRule>();
+
+            // The types are scanned in parallel, so the rules must go into a thread-safe collection.
+            var rules = new ConcurrentBag<DataDictionaryRule>();
 
             Parallel.ForEach(dtoTypes, (type) =>
             {
@@ -42,7 +45,7 @@ namespace EasyAbp.Abp.DataDictionary
                 }
             });
 
-            return rules;
+            return rules.ToList();
         }
     }
 }
